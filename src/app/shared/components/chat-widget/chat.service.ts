@@ -7,6 +7,7 @@ import { environment } from '../../../../environments/environment';
 export class ChatService {
   private apiUrl = environment.apiUrl;
 
+
   constructor(private http: HttpClient) {}
 
   sendMessage(message: string): Observable<{ reply: string }> {
