@@ -101,5 +101,18 @@
       "thanks": "¡Gracias por tu mensaje! Te responderé lo antes posible.",
       "waiting": "Un segundo, estoy buscando la mejor respuesta..."
     }
+  },
+  "calendar": {
+    "selected": "✓ Elegido",
+    "close": "✕",
+    "monthView": "Mes",
+    "today": "Hoy",
+    "prev": "Anterior",
+    "next": "Siguiente",
+    "available": "🟢 Disponible",
+    "busy": "🔴 Ocupado",
+    "blocked": "🔒 Bloqueado",
+    "confirm": "Confirmar",
+      "duration": "Duración: {{hours}}h"
   }
 }

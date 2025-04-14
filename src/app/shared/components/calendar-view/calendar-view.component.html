@@ -1,0 +1,13 @@
+<!-- Overlay oscuro -->
+@if(mostrarCalendario ){
+<div id="modalRef" class="modal-overlay">
+  <!-- Calendario centrado en pantalla -->
+  <div class="modal-container">
+    <full-calendar #calendar [options]=" calendarOptions" />
+  </div>
+</div>
+}
+
+<!-- Mostrar modal solo si hay evento seleccionado -->
+<app-calendar-confirm-modal [abrirModal]="abrirModalForm"
+  (confirmar)="onConfirmar($event)" (cancelar)="mostrarModalConfirmacion = false" />

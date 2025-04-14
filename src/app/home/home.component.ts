@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
@@ -13,12 +13,13 @@ import {
   faChartLine
 } from '@fortawesome/free-solid-svg-icons';
 import { ChatWidgetComponent } from '../shared/components/chat-widget/chat-widget.component';
+import { CalendarViewComponent } from '../shared/components/calendar-view/calendar-view.component';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, TranslateModule, RouterModule, AnimateOnScrollDirective, AnimateOnScrollAutoDirective, FontAwesomeModule, ChatWidgetComponent],
+  imports: [CommonModule, TranslateModule, RouterModule, AnimateOnScrollDirective, AnimateOnScrollAutoDirective, FontAwesomeModule, ChatWidgetComponent, CalendarViewComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   animations: [fadeIn, fadeUp, fadeLeft, zoomIn]
@@ -31,7 +32,12 @@ export class HomeComponent {
   faWrench = faWrench;
   faChartLine = faChartLine;
   public currentYear: number = new Date().getFullYear();
+  openCalendarEvent = new EventEmitter()
 
+
+  openCalendar() {
+    this.openCalendarEvent.emit()
+  }
 
   ngAfterViewInit() {
     if (this.videoRef) {

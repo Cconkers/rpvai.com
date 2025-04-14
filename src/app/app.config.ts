@@ -1,5 +1,5 @@
 // Angular imports
-import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, inject, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient, HttpClient } from '@angular/common/http';
 import { routes } from './app.routes';
@@ -14,17 +14,32 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 
 // ngx-translate imports
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
+import { TranslateModule, TranslateLoader, TranslateService } from "@ngx-translate/core";
 
-const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader = (http: HttpClient) =>
-  new TranslateHttpLoader(http, './assets/i18n/', '.json');
+// Angular i18n locale
+import { LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+import localeEn from '@angular/common/locales/en';
+registerLocaleData(localeEs, 'es');
+registerLocaleData(localeEn, 'en');
 
 // lottie imports
 import { provideLottieOptions } from 'ngx-lottie';
 import player from 'lottie-web';
 
+const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader = (http: HttpClient) =>
+  new TranslateHttpLoader(http, './assets/i18n/', '.json');
+
 export const appConfig: ApplicationConfig = {
   providers: [
+    {
+      provide: LOCALE_ID,
+      useFactory: () => {
+        const translate = inject(TranslateService);
+        return translate.currentLang || 'en';
+      },
+    },
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideFirebaseApp(() =>
@@ -56,4 +71,3 @@ export const appConfig: ApplicationConfig = {
     }),
   ],
 };
-
