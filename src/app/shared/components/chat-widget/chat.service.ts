@@ -11,6 +11,5 @@ export class ChatService {
 
   sendMessage(message: string): Observable<{ reply: string }> {
     return this.http.post<{ reply: string }>(this.apiUrl, { message });
-
   }
 }
