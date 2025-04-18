@@ -24,7 +24,7 @@ jobs:
       - name: 🛠️ Build Angular app
         run: npm run build -- --configuration production
 
-      - name: 🚀 Rsync al servidor VPS
+      - name: 🧹 Limpiar carpeta destino en el VPS
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -32,18 +32,15 @@ jobs:
           key: ${{ secrets.VPS_KEY }}
           port: 22
           script: |
-            # Limpiar contenido anterior
             rm -rf /var/www/frontend/rpvai.com/*
-            # Crear carpeta destino por si acaso no existe
             mkdir -p /var/www/frontend/rpvai.com
-        env:
-          RSYNC_RSH: "ssh -i ~/.ssh/id_rsa -p 22"
 
-      - name: 📤 Enviar archivos con rsync (contenido de browser)
+      - name: 📤 Enviar archivos con rsync (solo contenido de browser/)
         run: |
-          rsync -avz dist/landing-page-rpv/browser/ ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/frontend/rpvai.com/
-        env:
-          RSYNC_RSH: "ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -p 22"
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          rsync -avz -e "ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -p 22" dist/landing-page-rpv/browser/ ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/frontend/rpvai.com/
 
       - name: ✅ Confirmación
         uses: appleboy/ssh-action@master
