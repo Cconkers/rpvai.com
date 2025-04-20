@@ -1,6 +1,7 @@
 @use "./variables" as *;
 @use "./theme" as *;
 @use "./animations" as *;
+@use "./fonts" as *;
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,6 +18,7 @@ body {
   background: var(--background-gradient);
   min-height: 100vh;
   color: var(--text-color);
+  font-family: "Roboto", sans-serif;
 }
 
 html,
@@ -89,6 +91,12 @@ button {
   &:focus {
     outline: none;
   }
+}
+
+.form-label,
+small,
+button {
+  font-family: "IBM Plex Sans", sans-serif;
 }
 
 button.danger {
@@ -174,5 +182,4 @@ button.danger {
 html.no-scroll,
 body.no-scroll {
   overflow: hidden;
-  touch-action: none;
 }

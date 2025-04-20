@@ -10,7 +10,7 @@
 <!-- Chat modal -->
 @if (isOpen) {
 <div
-  class="bg-[#111827] border border-[#1f2937] rounded-xl shadow-lg p-4 scrollbar-custom backdrop-blur-md fixed bottom-24 right-10  text-text w-80 max-h-[70vh] flex flex-col z-40 overflow-hidden"
+  class="bg-[#111827] border border-[#1f2937] rounded-xl shadow-lg p-4 scrollbar-custom backdrop-blur-md fixed bottom-2 right-10 text-text flex flex-col z-40 overflow-hidden min-w-72 min-h-[60vh] md:min-h-[90vh] bot-container"
   [ngClass]="animationClass">
 
   <!-- Botón cerrar -->
@@ -24,7 +24,8 @@
   <div class="p-4 border-b border-white/10 font-semibold text-lg flex items-center gap-2">
     <!-- Character IMG -->
     <div class="w-24 h-24 rounded-full overflow-hidden border-4 border-primary shadow-md">
-      <img src="../../../../assets/icons/character-assistant.png" alt="AI Assistant Avatar" class="w-full h-full object-cover" />
+      <img src="../../../../assets/icons/character-assistant.png" alt="AI Assistant Avatar"
+        class="w-full h-full object-cover" />
     </div>
     {{ 'chatbot.virtual-assistant' | translate }}
   </div>

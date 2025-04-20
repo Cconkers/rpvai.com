@@ -1,0 +1,14 @@
+{
+  "/api/chat": {
+    "target": "http://localhost:3000",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/api/calendar": {
+    "target": "http://localhost:3001",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

@@ -53,9 +53,9 @@
   },
   "home": {
     "hero": {
-      "title": "Consultoría Web & IA para empresas",
+      "title": "Consultoría web & IA para empresas",
       "subtitle": "Mejora tu web, automatiza tu atención al cliente y escala con soluciones a medida integradas con IA.",
-      "cta-primary": "Solicita una Reunión Gratuita",
+      "cta-primary": "Solicita una reunión gratuita",
       "cta-secondary": "Ver cómo puedo ayudarte"
     },
     "features": {
@@ -92,7 +92,7 @@
     "type-here": "Escribe tu mensaje...",
     "sent-message": "Enviar mensaje",
     "whatcanidoforyou": "  ¿En qué puedo ayudarte?",
-    "virtual-assistant": "Asistente RPV",
+    "virtual-assistant": "Asistente IA  RPV",
     "responses": {
       "welcome": "Hola, ¿En qué puedo ayudarte hoy?",
       "thinking": "Déjame pensar un momento...",
@@ -100,19 +100,40 @@
       "fallback": "Estoy aquí para ayudarte. Prueba con otra pregunta o contáctame directamente.",
       "thanks": "¡Gracias por tu mensaje! Te responderé lo antes posible.",
       "waiting": "Un segundo, estoy buscando la mejor respuesta..."
+    },
+    "errors": {
+      "connection": "❌ Error al contactar con el asistente."
     }
   },
   "calendar": {
-    "selected": "✓ Elegido",
+    "selected": "Seleccionado",
     "close": "✕",
     "monthView": "Mes",
     "today": "Hoy",
     "prev": "Anterior",
     "next": "Siguiente",
-    "available": "🟢 Disponible",
-    "busy": "🔴 Ocupado",
-    "blocked": "🔒 Bloqueado",
+    "available": "Disponible",
+    "busy": "Ocupado",
+    "holiday": "Festivo",
+    "blocked": "Bloqueado",
     "confirm": "Confirmar",
-      "duration": "Duración: {{hours}}h"
+    "duration": "Duración: {{hours}}h",
+    "confirmation_success": "Reunión agendada",
+    "confirmation_error": "Error al agendar reunión",
+    "duplicate_email": "Ya tienes una reunión programada con este correo.",
+    "form": {
+      "name": "Tu nombre",
+      "bussines-name": "Nombre de empresa (opcional)",
+      "email": "Tu correo electrónico",
+      "accept": "Aceptar",
+      "cancel": "Cancelar",
+      "confirm-meeting": "Confirmar reunión"
+    }
+  },
+  "errors": {
+    "required": "Este campo es obligatorio."
+  },
+  "loading": {
+    "title": "Cargando"
   }
 }

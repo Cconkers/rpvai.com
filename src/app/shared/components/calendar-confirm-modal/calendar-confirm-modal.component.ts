@@ -13,7 +13,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 })
 export class CalendarConfirmModalComponent implements OnInit {
   @Input() abrirModal = new EventEmitter<Date>(); // Ej: "Jueves 17 de abril, 18:00h"
-  @Output() confirmar = new EventEmitter<{ nombre: string, empresa: string, email: string, fecha: Date }>();
+  @Output() confirmar = new EventEmitter<{ name: string, bussines: string, email: string, date: Date }>();
 
   destroyRef = inject(DestroyRef);
 
@@ -21,17 +21,16 @@ export class CalendarConfirmModalComponent implements OnInit {
   fechaSeleccionada: Date | null = null;
   datosUsuario!: FormGroup;
 
-  constructor(public  translate: TranslateService, private fb: FormBuilder) { }
+  constructor(public translate: TranslateService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.datosUsuario = this.fb.group({
-      nombre: ['', Validators.required],
-      empresa: [''],
+      name: ['', Validators.required],
+      bussines: [''],
       email: ['', [Validators.required, Validators.email]]
     });
     this.abrirModal.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (fecha) => {
-        console.log(fecha);
         this.abrirModalConfirmacion(fecha)
       }
     })
@@ -42,22 +41,21 @@ export class CalendarConfirmModalComponent implements OnInit {
     this.mostrarModalConfirmacion = true;
   }
 
-
   confirmarReunion() {
-    console.log(this.datosUsuario);
-
     if (this.datosUsuario.valid) {
       const datos = this.datosUsuario.value;
       this.confirmar.emit({
         ...datos,
-        fecha: this.fechaSeleccionada
+        date: this.fechaSeleccionada
       })
-      // Aquí iría la llamada a la API de Google Calendar en el futuro
+      this.datosUsuario.reset();
       this.mostrarModalConfirmacion = false;
       this.fechaSeleccionada = null;
     }
   }
+
   cancelarReunion() {
+    this.datosUsuario.reset();
     this.mostrarModalConfirmacion = false;
   }
 
@@ -70,4 +68,8 @@ export class CalendarConfirmModalComponent implements OnInit {
     });
   }
 
+
+  getTranslate(key: string) {
+    return this.translate.instant(key)
+  }
 }

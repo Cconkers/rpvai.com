@@ -23,7 +23,6 @@ import { GeneralValidators } from '../../shared/validators/general-validators';
     ReactiveFormsModule,
     NgTemplateOutlet,
     NgClass,
-    ToastMessageComponent,
     LottieComponent,
     RouterModule
   ],

@@ -3,11 +3,12 @@
 <div id="modalRef" class="modal-overlay">
   <!-- Calendario centrado en pantalla -->
   <div class="modal-container">
-    <full-calendar #calendar [options]=" calendarOptions" />
+    <full-calendar #calendar [options]=" calendarOptions">
+    </full-calendar>
   </div>
 </div>
 }
 
 <!-- Mostrar modal solo si hay evento seleccionado -->
-<app-calendar-confirm-modal [abrirModal]="abrirModalForm"
-  (confirmar)="onConfirmar($event)" (cancelar)="mostrarModalConfirmacion = false" />
+<app-calendar-confirm-modal [abrirModal]="abrirModalForm" (confirmar)="onConfirmar($event)"
+  (cancelar)="mostrarModalConfirmacion = false" />

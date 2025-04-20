@@ -1,22 +1,48 @@
 @if(mostrarModalConfirmacion) {
-<div class="modal-overlay">
-  <div class="modal-container">
-    <h2 class="modal-title">Confirmar reunión</h2>
+<div class="confirm-modal-overlay">
+  <div class="confirm-modal-container">
 
-    <div class="modal-info">
-      <p>{{ fechaSeleccionada | date:'fullDate':undefined:translate.currentLang }}</p>
-      <p>{{ fechaSeleccionada | date:'shortTime':undefined:translate.currentLang }} - {{ 'calendar.duration' | translate:{hours:1} }}</p>
+    <div class="confirm-modal-container-title">
+      <h2 class="modal-title">{{ 'calendar.form.confirm-meeting' | translate }}</h2>
+
+      <div class="modal-info">
+        <p>{{ fechaSeleccionada | date:'fullDate':undefined:translate.currentLang }}</p>
+        <p>{{ fechaSeleccionada | date:'shortTime':undefined:translate.currentLang }} - {{ 'calendar.duration' |
+          translate:{hours:1} }}</p>
+      </div>
     </div>
 
     <form [formGroup]="datosUsuario">
-      <input type="text" [required]="true" name="nombre" formControlName="nombre" placeholder="Tu nombre" required />
-      <input type="text" name="empresa" formControlName="empresa" placeholder="Empresa (opcional)" />
-      <input type="email" [required]="true" name="email" formControlName="email" placeholder="Correo electrónico"
+
+      <input [class.input-error]="datosUsuario.get('name')?.invalid && datosUsuario.get('name')?.touched" type="text"
+        [required]="true" name="name" formControlName="name" [placeholder]="getTranslate('calendar.form.name')"
         required />
 
+
+      <span class="error-hint"
+        [class.visible]="datosUsuario.get('name')?.invalid && datosUsuario.get('name')?.touched">{{ 'errors.required' |
+        translate }}</span>
+
+      <input class="mb-6" type="text" name="bussines" formControlName="bussines"
+        [placeholder]="getTranslate('calendar.form.bussines-name')" />
+
+      <input [class.input-error]="datosUsuario.get('email')?.invalid && datosUsuario.get('email')?.touched" type="email"
+        [required]="true" name="email" formControlName="email" [placeholder]="getTranslate('calendar.form.email')"
+        required />
+
+
+      <span class="error-hint"
+        [class.visible]="datosUsuario.get('email')?.invalid && datosUsuario.get('email')?.touched">{{ 'errors.required'
+        |
+        translate }}</span>
+
+
       <div class="modal-actions">
-        <button type="button" (click)="confirmarReunion()" [disabled]="datosUsuario.invalid">Aceptar</button>
-        <button type="button" (click)="cancelarReunion()">Cancelar</button>
+        <button type="button" (click)="confirmarReunion()" [disabled]="datosUsuario.invalid">{{ 'calendar.form.accept'
+          | translate }}</button>
+
+        <button type="button" (click)="cancelarReunion()">{{ 'calendar.form.cancel' | translate }}</button>
+
       </div>
     </form>
   </div>

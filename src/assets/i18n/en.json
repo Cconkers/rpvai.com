@@ -92,7 +92,7 @@
     "type-here": "Write your message...",
     "whatcanidoforyou": "How can I assist you?",
     "sent-message": "Sent message",
-    "virtual-assistant": "RPV's Assistant",
+    "virtual-assistant": "RPV's AI Assistant",
     "responses": {
       "welcome": "Hello, How can I help you today?",
       "thinking": "Let me think for a second...",
@@ -100,19 +100,40 @@
       "fallback": "I'm here to help. Try asking something else or contact me directly.",
       "thanks": "Thanks for your message! I'll get back to you as soon as I can.",
       "waiting": "Hold on, looking for the best answer..."
+    },
+    "errors": {
+      "connection": "❌ Error contacting the assistant."
     }
   },
   "calendar": {
-    "selected": "✓ Selected",
+    "selected": "Selected",
     "close": "✕",
     "monthView": "Month",
     "today": "Today",
     "prev": "Prev",
     "next": "Next",
-    "available": "🟢 Available",
-    "busy": "🔴 Busy",
-    "blocked": "🔒 Blocked",
+    "available": "Available",
+    "busy": "Busy",
+    "holiday": "Holiday",
+    "blocked": "Blocked",
     "confirm": "Confirm",
-    "duration": "Duration: {{hours}}h"
+    "duration": "Duration: {{hours}}h",
+    "confirmation_success": "Meeting scheduled",
+    "confirmation_error": "Error scheduling the meeting",
+    "duplicate_email": "You already have a meeting scheduled with this email.",
+    "form": {
+      "name": "Your name",
+      "bussines-name": "Your business name (optional)",
+      "email": "Your email",
+      "accept": "Confirm",
+      "cancel": "Cancel",
+      "confirm-meeting": "Confirm meeting"
+    }
+  },
+  "errors": {
+    "required": "This field is required."
+  },
+  "loading": {
+    "title": "Loading"
   }
 }

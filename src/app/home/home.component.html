@@ -1,10 +1,10 @@
 <!-- Hero BG: Video + Overlay -->
 <div class="absolute inset-0 pointer-events-none z-0">
   <video #videoRef autoplay muted loop playsinline
-  class="absolute inset-0 w-full h-full object-cover pointer-events-none z-0 opacity-60">
-  <source src="/assets/videos/hero-bg.webm" type="video/webm" />
-  Tu navegador no soporta la etiqueta de video.
-</video>
+    class="absolute inset-0 w-full h-full object-cover pointer-events-none z-0 opacity-60">
+    <source src="/assets/videos/hero-bg.webm" type="video/webm" />
+    Tu navegador no soporta la etiqueta de video.
+  </video>
 </div>
 
 
@@ -20,24 +20,20 @@
           {{ 'home.hero.subtitle' | translate }}
         </p>
         <div class="flex gap-4">
-          <a [routerLink]="['/auth/sign-up']"
-          class="btn-gradient bg-primary text-white px-8 py-3 rounded-lg font-medium hover:bg-primary/90 transition-all duration-200 transform hover:scale-105">
-          {{ 'home.hero.cta-primary' | translate }}
-        </a>
-        <a (click)="openCalendar()" [routerLink]="['/about']"
-        class="border-2 border-white text-white px-8 py-3 rounded-lg font-medium hover:bg-white/10 transition-all duration-200">
-        {{ 'home.hero.cta-secondary' | translate }}
-      </a>
+          <a (click)="openCalendar()" [routerLink]="['/auth/sign-up']"
+            class="btn-gradient bg-primary text-white px-8 py-3 rounded-lg font-medium hover:bg-primary/90 transition-all duration-200 transform hover:scale-105">
+            {{ 'home.hero.cta-primary' | translate }}
+          </a>
+          <a [routerLink]="['/about']"
+            class="border-2 border-white text-white px-8 py-3 rounded-lg font-medium hover:bg-white/10 transition-all duration-200">
+            {{ 'home.hero.cta-secondary' | translate }}
+          </a>
+        </div>
+      </header>
     </div>
-  </header>
-  <!-- Hero Image -->
-  <div class="lg:w-1/2">
-  </div>
-</div>
-</main>
+  </main>
 </section>
 
-<div class="w-full h-12 bg-background z-10 clip-bottom-triangle"></div>
 <app-calendar-view [openCalendar]="openCalendarEvent"></app-calendar-view>
 
 <!-- Features Section -->
@@ -118,7 +114,7 @@
     <p class="text-lg mb-8 max-w-2xl mx-auto">
       {{ 'home.cta.description' | translate }}
     </p>
-    <a [routerLink]="['/auth/sign-up']"
+    <a (click)="openCalendar()" [routerLink]="['/auth/sign-up']"
       class="inline-block bg-white text-primary px-8 py-3 rounded-lg font-semibold shadow-md hover:shadow-xl transition-all duration-200 transform hover:scale-105">
       {{ 'home.cta.button' | translate }}
     </a>

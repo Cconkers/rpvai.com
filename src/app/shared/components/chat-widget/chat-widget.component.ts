@@ -54,6 +54,8 @@ export class ChatWidgetComponent implements AfterViewChecked {
   toggleChat() {
     if (this.isOpen) {
       this.animationClass = 'chat-out';
+
+
       setTimeout(() => {
         this.isOpen = false;
         this.animationClass = '';
@@ -61,6 +63,7 @@ export class ChatWidgetComponent implements AfterViewChecked {
     } else {
       this.isOpen = true;
       this.animationClass = 'chat-in';
+
       if (this.messages.length === 0) {
         this.addWelcomeMessage();
       }
@@ -87,7 +90,7 @@ export class ChatWidgetComponent implements AfterViewChecked {
       error: (err) => {
         console.log(err);
 
-        this.messages.push({ from: 'bot', text: err.error.reply ?? '❌ Error al contactar con el asistente.' });
+        this.messages.push({ from: 'bot', text: this.translate.instant('chatbot.errors.connection') });
         this.isBotTyping = false;
       }
     });
