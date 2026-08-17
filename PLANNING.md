@@ -9,8 +9,8 @@
 
 ## 0. Estado actual (agosto 2026)
 
-**Esta sección prevalece.** El repo está en **fase de kit documental**. No hay scaffold
-Astro ni `package.json`. El código de UI empieza en SPEC-001.
+**Esta sección prevalece.** SPEC-001 está implementada: Astro SSG + Tailwind v4,
+tokens en `global.css`, CI y `vercel.json`. No hay UI comercial aún (SPEC-002+).
 
 ### 0.1 Qué hay ahora
 

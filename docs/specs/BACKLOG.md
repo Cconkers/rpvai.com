@@ -20,7 +20,7 @@ Burbujas 016) antes de redactar la SPEC.
 El kit documental (Grupo A) está hecho, incluida la decisión de sustituir
 [Cconkers/rpvai.com](https://github.com/Cconkers/rpvai.com) (D-032).
 
-Siguiente: redactar e implementar **SPEC-001**. Ver [`001.plan.md`](./001.plan.md).
+Siguiente: redactar e implementar **SPEC-002**. Ver [`BACKLOG.md`](./BACKLOG.md).
 
 ---
 
@@ -28,12 +28,11 @@ Siguiente: redactar e implementar **SPEC-001**. Ver [`001.plan.md`](./001.plan.m
 
 ### SPEC-001 — Scaffold Astro + tokens
 
-- **Estado:** `Planned` (detalle en [`001.plan.md`](./001.plan.md))
+- **Estado:** `Done` (agosto 2026)
 - **Ruta:** raíz del repo, `src/layouts/`, `src/styles/global.css`
-- **Incluye:** `npm create astro`, Tailwind v4 en CSS, TypeScript strict, `npm run check`,
-  BaseLayout mínimo (skip link, lang=es), tokens `@theme` según DESIGN_SYSTEM, fuentes
-  autoalojadas, `.gitignore`. Git: `develop` + rama de SPEC.
-- **Excluye:** secciones de marketing, recorte de foto, React, `tailwind.config`.
+- **Incluye:** Astro + Tailwind v4 en CSS, TypeScript strict, `npm run check`,
+  BaseLayout (skip link, lang=es), tokens `@theme`, fuentes autoalojadas,
+  `.gitignore`, CI GitHub Actions, `vercel.json` + deploy a Vercel (D-033).
 
 ### SPEC-002 — Header, nav, footer
 

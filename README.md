@@ -43,3 +43,12 @@ No usar el marco azul ni el sparkle en la UI (D-014). Recorte en SPEC-003.
 | `npm run build` | Producción |
 
 Node >= 22.12.0.
+
+## Deploy (Vercel, como Burbujas)
+
+- CI: [`.github/workflows/ci.yml`](.github/workflows/ci.yml) — `check` + `build` en cada push.
+- Hosting: [`vercel.json`](vercel.json) — estático, carpeta `dist/`.
+- Autodeploy: [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) en `develop` (producción) y `cursor/**` (preview).
+
+Secretos de GitHub Actions: `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`.
+También se puede enlazar el repo en el dashboard de Vercel (producción = `develop`), igual que Burbujas.

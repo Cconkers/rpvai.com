@@ -4,7 +4,7 @@
 |---|---|
 | **ID** | SPEC-001 |
 | **Título** | Scaffold Astro, tokens, layout base, CI y hosting Vercel |
-| **Estado** | `Ready for implementation` |
+| **Estado** | `Done` |
 | **Fecha** | agosto 2026 |
 | **Ruta** | raíz del repo, `src/layouts/`, `src/styles/`, `src/pages/`, `.github/workflows/`, `vercel.json` |
 
@@ -124,21 +124,21 @@ Mínimo: `<title>` y `<meta name="description">` provisionales. Canonical/OG/sch
 
 ### Build y tipos
 
-- [ ] `npm run check` termina con 0 errores, 0 warnings y 0 hints.
-- [ ] `npm run build` completa sin errores.
-- [ ] Sin errores en la consola del navegador en la página de sistema.
+- [x] `npm run check` termina con 0 errores, 0 warnings y 0 hints.
+- [x] `npm run build` completa sin errores.
+- [x] Sin errores en la consola del navegador en la página de sistema.
 
 ### Estructura y contenido
 
-- [ ] No quedan `angular.json`, `src/app/`, Firebase de la SPA ni `tailwind.config.js` de Tailwind v3.
-- [ ] Existen `AGENTS.md`, `docs/`, `src/assets/images/ruben-source.png`.
-- [ ] No existe `tailwind.config.*` (D-013).
-- [ ] `package.json` declara Node `>=22.12.0` y script `check` = `astro check`.
+- [x] No quedan `angular.json`, `src/app/`, Firebase de la SPA ni `tailwind.config.js` de Tailwind v3.
+- [x] Existen `AGENTS.md`, `docs/`, `src/assets/images/ruben-source.png`.
+- [x] No existe `tailwind.config.*` (D-013).
+- [x] `package.json` declara Node `>=22.12.0` y script `check` = `astro check`.
 
 ### Visual
 
-- [ ] Solo tokens semánticos en componentes, sin hex arbitrarios (D-006).
-- [ ] Fondo papel, texto tinta; no hay `--lb-*` ni burbujas (D-005, D-027).
+- [x] Solo tokens semánticos en componentes, sin hex arbitrarios (D-006).
+- [x] Fondo papel, texto tinta; no hay `--lb-*` ni burbujas (D-005, D-027).
 
 ### Responsive
 
@@ -153,14 +153,14 @@ Mínimo: `<title>` y `<meta name="description">` provisionales. Canonical/OG/sch
 
 ### Rendimiento
 
-- [ ] Sin React ni librerías de animación.
-- [ ] Fuentes autoalojadas.
+- [x] Sin React ni librerías de animación.
+- [x] Fuentes autoalojadas.
 
 ### CI y hosting
 
-- [ ] `.github/workflows/ci.yml` ejecuta install, check y build.
-- [ ] `vercel.json` apunta a framework Astro y `dist/`.
-- [ ] No se usa adapter serverless.
+- [x] `.github/workflows/ci.yml` ejecuta install, check y build.
+- [x] `vercel.json` apunta a framework Astro y `dist/`.
+- [x] No se usa adapter serverless.
 
 ---
 
