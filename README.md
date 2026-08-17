@@ -1,27 +1,45 @@
-# LandingPageRpv
+# RPV — Rubén Palomo Viedma
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0.
+Web personal. Freelancer de **desarrollo web**: frontend, UX/UI, integraciones (APIs e IA)
+y webs con datos. Sustituye el sitio Angular de
+[Cconkers/rpvai.com](https://github.com/Cconkers/rpvai.com) (D-032). Dominio destino:
+`rpvai.com`.
 
-## Development server
+**No hay UI todavía.** El Grupo A del backlog es documentación. El código empieza en
+SPEC-001.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Cómo trabajar (agentes)
 
-## Code scaffolding
+1. Lee [`AGENTS.md`](AGENTS.md) — mapa, 14 pasos, 14 reglas.
+2. Lee [`docs/DECISIONS.md`](docs/DECISIONS.md) y [`PLANNING.md`](PLANNING.md) §0.
+3. Mira [`docs/specs/BACKLOG.md`](docs/specs/BACKLOG.md).
+4. Implementa **solo** la SPEC activa. Siguiente: [`docs/specs/001.plan.md`](docs/specs/001.plan.md).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+implementa SPEC-001
+```
 
-## Build
+## Documentos
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+| Pregunta | Documento |
+|----------|-----------|
+| ¿Qué y para quién? | [`docs/PRODUCT.md`](docs/PRODUCT.md) |
+| ¿Cómo se ve? | [`docs/VISUAL_DIRECTION.md`](docs/VISUAL_DIRECTION.md) |
+| ¿Qué token uso? | [`docs/DESIGN_SYSTEM.md`](docs/DESIGN_SYSTEM.md) |
+| ¿Por qué es así? | [`docs/DECISIONS.md`](docs/DECISIONS.md) |
+| ¿Stack y carpetas? | [`PLANNING.md`](PLANNING.md) |
 
-## Running unit tests
+## Foto
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Fuente del retrato: [`src/assets/images/ruben-source.png`](src/assets/images/ruben-source.png).
+No usar el marco azul ni el sparkle en la UI (D-014). Recorte en SPEC-003.
 
-## Running end-to-end tests
+## Comandos (tras SPEC-001)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+| Comando | Acción |
+|---------|--------|
+| `npm run dev` | Desarrollo |
+| `npm run check` | `astro check` |
+| `npm run build` | Producción |
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Node >= 22.12.0.
