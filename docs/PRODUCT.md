@@ -39,7 +39,7 @@ lo vuelca como ficha de LinkedIn (D-030).
 | Nombre público | Rubén Palomo Viedma | Confirmado (CV) |
 | Marca corta | RPV | Confirmado |
 | Nombre de repo (local) | RPVAI_landing | Carpeta de trabajo |
-| Repo público a sustituir | [Cconkers/rpvai.com](https://github.com/Cconkers/rpvai.com) | Confirmado (D-032) |
+| Repo público | [Cconkers/rpvai](https://github.com/Cconkers/rpvai) | Confirmado (D-034; antes `rpvai.com`, D-032) |
 | Dominio | `rpvai.com` | Confirmado como destino; preview Vercel antigua 404 |
 | GitHub | [github.com/Cconkers](https://github.com/Cconkers) | Confirmado (perfil) |
 | LinkedIn | [ruben-viedma-191a5913a](https://www.linkedin.com/in/ruben-viedma-191a5913a) | Confirmado (perfil GitHub) |
@@ -70,9 +70,10 @@ GitHub perfil indica ciudad Sevilla; **no se destaca en la web** (D-017).
 
 ## Predecesor (no se porta)
 
-El sitio vivo debía ser [Cconkers/rpvai.com](https://github.com/Cconkers/rpvai.com)
-(rama `develop`, Angular 19, Tailwind 3, Firebase, i18n, auth, calendario, chatbot Lottie).
-Título: «RPVAI · Consultora Web & IA». Preview Vercel `landing-page-rpv.vercel.app`: 404.
+El sitio vivo debía ser el repo ahora llamado [Cconkers/rpvai](https://github.com/Cconkers/rpvai)
+(antes `Cconkers/rpvai.com`; D-032, D-034). Rama `develop`, Angular 19, Tailwind 3, Firebase,
+i18n, auth, calendario, chatbot Lottie. Título: «RPVAI · Consultora Web & IA». Preview Vercel
+`landing-page-rpv.vercel.app`: 404.
 
 Este proyecto **sustituye** ese código. Se conservan repo GitHub, dominio `rpvai.com` y
 rama `develop`. No se reutiliza la SPA ni el tono de consultora. Detalle en D-032.

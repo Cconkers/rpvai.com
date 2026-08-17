@@ -1,0 +1,364 @@
+---
+import { navLinks, site } from '../../data/site';
+
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isHome = pathname === '/';
+const isAbout = pathname === '/about';
+
+function isCurrent(href: string): boolean {
+  if (href === '/about') return isAbout;
+  if (href === '/') return isHome;
+  return false;
+}
+---
+
+<header class="site-header" id="site-header" role="banner">
+  <div class="site-header__inner">
+    <a
+      class="site-wordmark"
+      href="/"
+      aria-label={`${site.name} — inicio`}
+    >
+      <span class="type-label text-accent">{site.mark}</span>
+      <span class="site-wordmark__name">{site.shortName}</span>
+    </a>
+
+    <nav class="site-nav-desktop" aria-label="Principal" data-site-nav>
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            data-nav-link
+            data-nav-href={link.href}
+            data-nav-section={link.section ?? ''}
+            aria-current={isCurrent(link.href) ? 'page' : undefined}
+            class:list={['site-nav-link', { 'is-active': isCurrent(link.href) }]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <a
+      class="btn btn-primary site-header__cta"
+      href={site.whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {site.ctaLabel}
+    </a>
+
+    <details class="site-nav-mobile" id="site-nav-mobile">
+      <summary class="site-nav-toggle" aria-label="Abrir menú de navegación">
+        <svg
+          class="icon-menu"
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <line x1="3" y1="7" x2="21" y2="7"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="17" x2="21" y2="17"></line>
+        </svg>
+        <svg
+          class="icon-close"
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+          <line x1="6" y1="18" x2="18" y2="6"></line>
+        </svg>
+      </summary>
+
+      <nav class="site-nav-panel" aria-label="Principal móvil" data-site-nav>
+        {
+          navLinks.map((link) => (
+            <a
+              href={link.href}
+              data-nav-link
+              data-nav-href={link.href}
+              data-nav-section={link.section ?? ''}
+              aria-current={isCurrent(link.href) ? 'page' : undefined}
+              class:list={['site-nav-panel__link', { 'is-active': isCurrent(link.href) }]}
+            >
+              {link.label}
+            </a>
+          ))
+        }
+        <a
+          class="btn btn-primary site-nav-panel__cta"
+          href={site.whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {site.ctaLabel}
+        </a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    max-width: var(--content-max);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    min-height: 4rem;
+  }
+
+  .site-wordmark {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    text-decoration: none;
+    color: var(--color-text);
+    min-height: 44px;
+    justify-content: center;
+    margin-right: auto;
+  }
+
+  .site-wordmark__name {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: var(--tracking-tight);
+  }
+
+  .site-nav-desktop {
+    display: none;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .site-nav-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-inline: var(--space-3);
+    font-size: var(--text-small);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  .site-nav-link:hover,
+  .site-nav-link.is-active {
+    color: var(--color-text);
+  }
+
+  .site-nav-link.is-active {
+    box-shadow: inset 0 -2px 0 var(--color-accent);
+    border-radius: 0;
+  }
+
+  .site-header__cta {
+    display: none;
+  }
+
+  .site-nav-mobile {
+    position: relative;
+  }
+
+  .site-nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    list-style: none;
+    color: var(--color-text);
+  }
+
+  .site-nav-toggle::-webkit-details-marker {
+    display: none;
+  }
+
+  .site-nav-toggle .icon-close {
+    display: none;
+  }
+
+  .site-nav-mobile[open] .icon-menu {
+    display: none;
+  }
+
+  .site-nav-mobile[open] .icon-close {
+    display: block;
+  }
+
+  .site-nav-mobile[open] .site-nav-toggle {
+    background: var(--color-background-alt);
+  }
+
+  .site-nav-panel {
+    position: absolute;
+    top: calc(100% + var(--space-2));
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    min-width: min(18rem, calc(100vw - var(--gutter) * 2));
+    padding: var(--space-3);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .site-nav-panel__link {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding-inline: var(--space-4);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+  }
+
+  .site-nav-panel__link:hover,
+  .site-nav-panel__link.is-active {
+    color: var(--color-text);
+    background: var(--color-background-alt);
+  }
+
+  .site-nav-panel__cta {
+    margin-top: var(--space-2);
+    width: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    .site-nav-desktop {
+      display: flex;
+    }
+
+    .site-header__cta {
+      display: inline-flex;
+    }
+
+    .site-nav-mobile {
+      display: none;
+    }
+
+    .site-wordmark {
+      flex-direction: row;
+      align-items: baseline;
+      gap: var(--space-3);
+    }
+  }
+</style>
+
+<script>
+  const details = document.getElementById('site-nav-mobile') as HTMLDetailsElement | null;
+  const toggle = details?.querySelector<HTMLElement>('.site-nav-toggle');
+  const header = document.getElementById('site-header');
+
+  const setToggleLabel = () => {
+    if (!details || !toggle) return;
+    toggle.setAttribute(
+      'aria-label',
+      details.open ? 'Cerrar menú de navegación' : 'Abrir menú de navegación',
+    );
+  };
+
+  details?.addEventListener('toggle', setToggleLabel);
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && details?.open) {
+      details.open = false;
+      toggle?.focus();
+    }
+  });
+
+  details?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      if (details) details.open = false;
+    });
+  });
+
+  const desktopQuery = window.matchMedia('(min-width: 1024px)');
+  desktopQuery.addEventListener('change', (event) => {
+    if (event.matches && details) details.open = false;
+  });
+
+  const spyOrder = [
+    { href: '/', section: null as string | null },
+    { href: '/#trabajo', section: 'trabajo' },
+    { href: '/#servicios', section: 'servicios' },
+    { href: '/#contacto', section: 'contacto' },
+  ];
+
+  function setActiveHref(href: string) {
+    document.querySelectorAll<HTMLElement>('[data-nav-link]').forEach((link) => {
+      const match = link.dataset.navHref === href;
+      link.classList.toggle('is-active', match);
+      if (match) link.setAttribute('aria-current', href === '/about' ? 'page' : 'true');
+      else link.removeAttribute('aria-current');
+    });
+  }
+
+  function resolveActiveHref(): string {
+    if (window.location.pathname.replace(/\/$/, '') === '/about') return '/about';
+    if (!header) return '/';
+
+    const offset = header.offsetHeight + Math.min(80, window.innerHeight * 0.15);
+    const y = window.scrollY + offset;
+    if (window.scrollY < 48) return '/';
+
+    let active = '/';
+    for (const item of spyOrder) {
+      if (!item.section) continue;
+      const el = document.getElementById(item.section);
+      if (!el) continue;
+      const top = el.getBoundingClientRect().top + window.scrollY;
+      if (top <= y) active = item.href;
+    }
+    return active;
+  }
+
+  let spyTicking = false;
+  const updateSpy = () => {
+    setActiveHref(resolveActiveHref());
+    spyTicking = false;
+  };
+
+  const onScrollSpy = () => {
+    if (spyTicking) return;
+    spyTicking = true;
+    requestAnimationFrame(updateSpy);
+  };
+
+  window.addEventListener('scroll', onScrollSpy, { passive: true });
+  window.addEventListener('hashchange', updateSpy);
+  window.addEventListener('load', updateSpy);
+  updateSpy();
+</script>

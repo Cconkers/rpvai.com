@@ -833,6 +833,42 @@ Misma puerta de calidad y el mismo hosting que el otro producto Astro del propie
 
 ---
 
+## D-034 — El repo público se llama Cconkers/rpvai
+
+**Fecha:** agosto 2026
+**Estado:** Accepted
+**Área:** Architecture
+
+### Contexto
+
+El propietario renombró el repositorio de GitHub. El slug anterior `Cconkers/rpvai.com`
+redirige; el nombre canónico es `rpvai`. El dominio público de la web sigue siendo
+`rpvai.com`.
+
+### Decisión
+
+- Destino git: `https://github.com/Cconkers/rpvai.git`, rama `develop`.
+- En documentación y enlaces, usar `Cconkers/rpvai`. El slug `rpvai.com` queda como
+  histórico (D-032).
+- Dominio del sitio: `rpvai.com` (sin cambio).
+- Enlazar Vercel al repo `Cconkers/rpvai` si el dashboard aún muestra el nombre viejo.
+
+### Motivo
+
+Un solo nombre canónico evita clones y secrets apuntando a una URL obsoleta.
+
+### Consecuencias
+
+- D-032 sigue vigente en todo lo demás (no portar la SPA, marca personal, `develop`).
+- `origin` local debe usar el slug nuevo.
+
+### Relacionado
+
+- D-032, D-033
+- [`PRODUCT.md`](./PRODUCT.md) — Persona
+
+---
+
 ## Cómo añadir una nueva decisión
 
 ### Cuándo registrar

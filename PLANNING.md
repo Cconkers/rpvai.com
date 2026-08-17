@@ -70,13 +70,13 @@ No existirá `npm run astro check` (D-028).
 
 ### 0.7 Git
 
-Remoto previsto: `https://github.com/Cconkers/rpvai.com.git` (D-032). Rama de
-integración: `develop` (ya es la default del repo antiguo).
+Remoto: `https://github.com/Cconkers/rpvai.git` (D-034; antes `Cconkers/rpvai.com`, D-032).
+Rama de integración: `develop` (default del repo).
 
 Cuando se inicialice este árbol:
 
 1. `git init` si hace falta, rama `develop`.
-2. Añadir `origin` hacia `Cconkers/rpvai.com` **sin** mezclar el historial Angular
+2. Añadir `origin` hacia `Cconkers/rpvai` **sin** mezclar el historial Angular
    hasta que el propietario pida el reemplazo (push del nuevo árbol).
 3. Una rama `cursor/spec-NNN` por SPEC.
 4. Flujo al cerrar: [`.cursor/rules/spec-gitflow.mdc`](.cursor/rules/spec-gitflow.mdc).

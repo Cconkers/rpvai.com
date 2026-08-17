@@ -17,10 +17,8 @@ Burbujas 016) antes de redactar la SPEC.
 |----|------|--------|
 | — | Kit documental + revisión de oferta (servicios web, no landings) | **Done** (agosto 2026) |
 
-El kit documental (Grupo A) está hecho, incluida la decisión de sustituir
-[Cconkers/rpvai.com](https://github.com/Cconkers/rpvai.com) (D-032).
-
-Siguiente: redactar e implementar **SPEC-002**. Ver [`BACKLOG.md`](./BACKLOG.md).
+El kit documental (Grupo A) está hecho, incluida la decisión de sustituir el repo
+[Cconkers/rpvai](https://github.com/Cconkers/rpvai) (D-032, D-034).
 
 ---
 
@@ -36,12 +34,13 @@ Siguiente: redactar e implementar **SPEC-002**. Ver [`BACKLOG.md`](./BACKLOG.md)
 
 ### SPEC-002 — Header, nav, footer
 
-- **Estado:** `Planned`
-- **Ruta:** `src/components/` chrome
+- **Estado:** `Done` (agosto 2026)
+- **Ruta:** `src/components/` chrome, `src/layouts/BaseLayout.astro`, `/` y `/about`
 - **Incluye:** wordmark texto "Rubén Palomo" / RPV, anclas o rutas `/`, `/about`, trabajo,
   servicios, contacto. Nav móvil accesible. Footer con email y CTA WhatsApp. Skip link ya en
   layout.
 - **Excluye:** logo bitmap. Redes: GitHub y LinkedIn sí (D-032); el resto no.
+- **SPEC:** [`002-header-nav-footer.md`](./002-header-nav-footer.md)
 
 ### SPEC-003 — Home hero + retrato + CTA
 

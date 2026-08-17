@@ -1,22 +1,19 @@
 # RPV — Rubén Palomo Viedma
 
 Web personal. Freelancer de **desarrollo web**: frontend, UX/UI, integraciones (APIs e IA)
-y webs con datos. Sustituye el sitio Angular de
-[Cconkers/rpvai.com](https://github.com/Cconkers/rpvai.com) (D-032). Dominio destino:
+y webs con datos. Sustituye el sitio Angular del repo
+[Cconkers/rpvai](https://github.com/Cconkers/rpvai) (D-032, D-034). Dominio destino:
 `rpvai.com`.
-
-**No hay UI todavía.** El Grupo A del backlog es documentación. El código empieza en
-SPEC-001.
 
 ## Cómo trabajar (agentes)
 
 1. Lee [`AGENTS.md`](AGENTS.md) — mapa, 14 pasos, 14 reglas.
 2. Lee [`docs/DECISIONS.md`](docs/DECISIONS.md) y [`PLANNING.md`](PLANNING.md) §0.
 3. Mira [`docs/specs/BACKLOG.md`](docs/specs/BACKLOG.md).
-4. Implementa **solo** la SPEC activa. Siguiente: [`docs/specs/001.plan.md`](docs/specs/001.plan.md).
+4. Implementa **solo** la SPEC activa. Siguiente: [`docs/specs/BACKLOG.md`](docs/specs/BACKLOG.md).
 
 ```
-implementa SPEC-001
+implementa SPEC-003
 ```
 
 ## Documentos
