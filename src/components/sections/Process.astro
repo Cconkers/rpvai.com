@@ -1,0 +1,90 @@
+---
+import { processHonesty, processIntro, processSteps } from '../../data/offer';
+import { site } from '../../data/site';
+---
+
+<section class="page-shell" id="como-trabajo" aria-labelledby="proceso-heading">
+  <h2 class="type-h2" id="proceso-heading">Cómo trabajo</h2>
+  <p class="type-body-lg text-text-secondary section-lead">
+    {processIntro}
+  </p>
+
+  <ol class="process-steps">
+    {
+      processSteps.map((step, index) => (
+        <li class="process-step">
+          <span class="process-step__n" aria-hidden="true">
+            {String(index + 1).padStart(2, '0')}
+          </span>
+          <div>
+            <h3 class="type-h3">{step.title}</h3>
+            <p class="type-body text-text-secondary">{step.body}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+
+  <p class="type-body text-text-secondary process-note">{processHonesty}</p>
+
+  <a
+    class="btn btn-primary"
+    href={site.whatsappUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    {site.ctaLabel}
+  </a>
+</section>
+
+<style>
+  .section-lead {
+    margin: var(--space-4) 0 var(--space-8);
+  }
+
+  .process-steps {
+    display: grid;
+    gap: var(--space-6);
+    margin: 0 0 var(--space-8);
+    padding: 0;
+    list-style: none;
+    counter-reset: none;
+  }
+
+  .process-step {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-4);
+    align-items: start;
+  }
+
+  .process-step__n {
+    font-family: var(--font-display);
+    font-size: var(--text-h3);
+    font-weight: 600;
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-accent);
+    line-height: var(--leading-h3);
+    min-width: 2.5rem;
+  }
+
+  .process-step .type-h3 {
+    margin: 0 0 var(--space-2);
+  }
+
+  .process-note {
+    margin: 0 0 var(--space-8);
+    max-width: var(--prose-max);
+  }
+
+  @media (min-width: 1024px) {
+    .process-steps {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-8);
+    }
+
+    .process-step {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -57,13 +57,14 @@ El kit documental (Grupo A) está hecho, incluida la decisión de sustituir el r
 
 ### SPEC-004 — Servicios y cómo trabajo
 
-- **Estado:** `Planned`
+- **Estado:** `Done` (agosto 2026)
 - **Ruta:** `/` secciones servicios + proceso
 - **Incluye:** líneas de oferta (frontend, UX/UI, integraciones/APIs, IA aplicada, web con
   datos) según [`PRODUCT.md`](../PRODUCT.md) — Offer. Copy de brief + propuesta 48 h.
   Spec-driven + agentes en beneficio de cliente. Fullstack con IA: honestidad (núcleo
   frontend). Sin packs de landing ni cifras 1.490/2.490/3.490 (D-029, D-031).
 - **Excluye:** tarifas horarias, demo IA en esta web.
+- **SPEC:** [`004-servicios-proceso.md`](./004-servicios-proceso.md)
 
 ### SPEC-005 — Case study Burbujas + listado
 

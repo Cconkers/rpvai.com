@@ -1,0 +1,48 @@
+---
+import { services } from '../../data/offer';
+---
+
+<section class="page-shell" id="servicios" aria-labelledby="servicios-heading">
+  <h2 class="type-h2" id="servicios-heading">Servicios</h2>
+  <p class="type-body-lg text-text-secondary section-lead">
+    Desarrollo web por proyecto: la interfaz, las APIs, la IA y los datos que tu producto
+    necesite. No vendo packs de landing.
+  </p>
+
+  <ul class="service-grid" role="list">
+    {
+      services.map((service) => (
+        <li class="card">
+          <h3 class="type-h3">{service.title}</h3>
+          <p class="type-body text-text-secondary">{service.body}</p>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .section-lead {
+    margin: var(--space-4) 0 var(--space-8);
+  }
+
+  .service-grid {
+    display: grid;
+    gap: var(--space-6);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @media (min-width: 768px) {
+    .service-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .service-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

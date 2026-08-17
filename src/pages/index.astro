@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/sections/Hero.astro';
+import Process from '../components/sections/Process.astro';
+import Services from '../components/sections/Services.astro';
 import { site } from '../data/site';
 ---
 
@@ -17,12 +19,8 @@ import { site } from '../data/site';
     </p>
   </section>
 
-  <section class="page-shell" id="servicios" aria-labelledby="servicios-heading">
-    <h2 class="type-h2" id="servicios-heading">Servicios</h2>
-    <p class="type-body text-text-secondary">
-      Las líneas de oferta llegan en SPEC-004.
-    </p>
-  </section>
+  <Services />
+  <Process />
 
   <section class="page-shell" id="contacto" aria-labelledby="contacto-heading">
     <h2 class="type-h2" id="contacto-heading">Contacto</h2>
