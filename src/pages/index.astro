@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import AboutTeaser from '../components/sections/AboutTeaser.astro';
 import Hero from '../components/sections/Hero.astro';
 import Process from '../components/sections/Process.astro';
 import Services from '../components/sections/Services.astro';
@@ -16,10 +17,11 @@ import { site } from '../data/site';
   <Work />
   <Services />
   <Process />
+  <AboutTeaser />
 
   <section class="page-shell" id="contacto" aria-labelledby="contacto-heading">
     <SectionHead
-      kicker="04 — Empezar"
+      kicker="05 — Empezar"
       heading="Contacto"
       headingId="contacto-heading"
       lead="Cuéntame el negocio, el objetivo y el plazo. Te devuelvo una propuesta en 48 horas."

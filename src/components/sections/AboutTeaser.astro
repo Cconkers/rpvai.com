@@ -1,0 +1,50 @@
+---
+import Portrait from '../ui/Portrait.astro';
+import SectionHead from '../ui/SectionHead.astro';
+import { about } from '../../data/about';
+---
+
+<section class="band band--alt" id="sobre-mi" aria-labelledby="sobre-mi-heading">
+  <div class="page-shell">
+    <SectionHead
+      kicker="04 — Persona"
+      heading="Sobre mí"
+      headingId="sobre-mi-heading"
+      lead={about.teaserLead}
+    />
+
+    <div class="about-teaser">
+      <Portrait size="md" loading="lazy" />
+      <div class="about-teaser__copy">
+        <p class="type-body-lg text-text-secondary">{about.teaserBody}</p>
+        <a class="btn btn-secondary" href="/about">{about.moreLabel}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-teaser {
+    display: grid;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  .about-teaser__copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-6);
+  }
+
+  .about-teaser__copy .type-body-lg {
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    .about-teaser {
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: var(--space-10);
+    }
+  }
+</style>

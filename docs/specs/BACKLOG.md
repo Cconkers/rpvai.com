@@ -92,11 +92,12 @@ Cuerpo: contexto, enfoque spec-driven, resultado (cualitativo si no hay métrica
 
 ### SPEC-006 — About
 
-- **Estado:** `Planned`
+- **Estado:** `In progress` (agosto 2026)
 - **Ruta:** `/about` + bloque corto en home
 - **Incluye:** retrato, texto humano, curiosidades `[PLACEHOLDER]`, crédito ATMIRA/BME,
   Bosonit, Factoría F5. Inglés B2 si aporta. Remoto España.
 - **Excluye:** lista de Jira/Karma/ArgoCD, timeline corporativo completo.
+- **SPEC:** [`006-about.md`](./006-about.md)
 
 ### SPEC-007 — Contacto y brief
 

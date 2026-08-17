@@ -1,16 +1,106 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Portrait from '../components/ui/Portrait.astro';
+import Icon from '../components/ui/Icon.astro';
+import { about } from '../data/about';
+import { site } from '../data/site';
 ---
 
-<BaseLayout
-  title="Sobre mí — Rubén Palomo Viedma"
-  description="Quién es Rubén Palomo Viedma. Página en construcción."
->
-  <div class="page-shell">
-    <p class="type-label text-accent">RPV</p>
+<BaseLayout title={`Sobre mí — ${site.shortName}`} description={about.pageDescription}>
+  <article class="page-shell about">
+    <p class="type-label text-accent">{site.mark}</p>
     <h1 class="type-h1">Sobre mí</h1>
-    <p class="type-body-lg text-text-secondary">
-      Esta página se completa en SPEC-006. Mientras tanto, el contacto está en el pie.
-    </p>
-  </div>
+
+    <div class="about__layout">
+      <Portrait loading="eager" />
+
+      <div class="about__copy">
+        {
+          about.intro.map((paragraph) => (
+            <p class="type-body-lg text-text-secondary">{paragraph}</p>
+          ))
+        }
+
+        <p class="about__note type-small text-muted">{about.curiositiesNote}</p>
+
+        <div class="about__actions">
+          <a
+            class="btn btn-primary"
+            href={site.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {site.ctaLabel}
+          </a>
+          <a
+            class="btn btn-secondary"
+            href={site.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon name="github" size={18} />
+            GitHub
+          </a>
+          <a
+            class="btn btn-secondary"
+            href={site.linkedinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon name="linkedin" size={18} />
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+  </article>
 </BaseLayout>
+
+<style>
+  .about .type-label {
+    margin: 0;
+  }
+
+  .about__layout {
+    display: grid;
+    gap: var(--space-10);
+    align-items: start;
+  }
+
+  .about__copy {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    max-width: var(--prose-max);
+  }
+
+  .about__copy .type-body-lg {
+    margin: 0;
+  }
+
+  .about__note {
+    margin: var(--space-2) 0 0;
+    padding: var(--space-4);
+    border-left: 3px solid var(--color-border-strong);
+    background: var(--color-surface);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  }
+
+  .about__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+  }
+
+  .about__actions .btn {
+    gap: var(--space-2);
+  }
+
+  @media (min-width: 768px) {
+    .about__layout {
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: var(--space-12);
+    }
+  }
+</style>
