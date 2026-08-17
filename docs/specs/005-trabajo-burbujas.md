@@ -125,39 +125,39 @@ Title/description de la página de caso. Schema: SPEC-008.
 
 ### Build y tipos
 
-- [ ] `npm run check` — 0 errores, 0 warnings, 0 hints
-- [ ] `npm run build` — OK; existe `/work/burbujas-de-luz`
-- [ ] No se generan `/work/proyecto-2` ni `/work/proyecto-3`
+- [x] `npm run check` — 0 errores, 0 warnings, 0 hints
+- [x] `npm run build` — OK; existe `/work/burbujas-de-luz`
+- [x] No se generan `/work/proyecto-2` ni `/work/proyecto-3`
 
 ### Estructura y contenido
 
-- [ ] Collection `projects` con Burbujas + dos placeholders
-- [ ] Home lista Burbujas primero
-- [ ] Página de caso con contexto, enfoque y resultado
-- [ ] URL de producción no inventada
-- [ ] Sin Portal del Donante ni capturas internas de empleo
-- [ ] Copy no usa `--lb-*` ni tono de lavandería como marca RPV
+- [x] Collection `projects` con Burbujas + dos placeholders
+- [x] Home lista Burbujas primero
+- [x] Página de caso con contexto, enfoque y resultado
+- [x] URL de producción no inventada
+- [x] Sin Portal del Donante ni capturas internas de empleo
+- [x] Copy no usa `--lb-*` ni tono de lavandería como marca RPV
 
 ### Visual
 
-- [ ] Tokens semánticos (D-006)
-- [ ] Distinto de Burbujas (D-005, D-027)
-- [ ] Una sola card featured
-- [ ] Hover de elevación solo en la card-enlace
+- [x] Tokens semánticos (D-006)
+- [x] Distinto de Burbujas (D-005, D-027)
+- [x] Una sola card featured
+- [x] Hover de elevación solo en la card-enlace
 
 ### Responsive
 
-- [ ] 320–1440 sin scroll horizontal
+- [x] 320–1440 sin scroll horizontal
 
 ### Accesibilidad
 
-- [ ] Teclado hasta el caso y vuelta
-- [ ] `prefers-reduced-motion` respetado
+- [x] Teclado hasta el caso y vuelta
+- [x] `prefers-reduced-motion` respetado
 
 ### Rendimiento
 
-- [ ] Sin dependencias nuevas
-- [ ] Sin imágenes de stock
+- [x] Sin dependencias nuevas
+- [x] Sin imágenes de stock
 
 ---
 
