@@ -7,9 +7,9 @@ export const site = {
   whatsappUrl: 'https://wa.me/34722203003',
   ctaLabel: 'Cuéntame tu proyecto',
   availabilityLabel: 'Aceptando proyectos',
-  heroHeadline: 'Webs serias con tecnología de primer nivel',
+  heroHeadline: 'Desarrollo web con criterio de estudio',
   heroSupport:
-    'Interfaz impecable, stack moderno y calidad de estudio a un precio justo. Brief gratuito y propuesta en 48 horas.',
+    'Frontend, APIs, IA y datos. Trabajo real desplegado, stack moderno y propuesta clara en 48 horas.',
   heroTechLine: 'Astro · TypeScript · Tailwind · IA aplicada',
   ctaSecondaryLabel: 'Ver servicios',
   ctaSecondaryHref: '/#servicios',

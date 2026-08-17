@@ -6,8 +6,6 @@ import Hero from '../components/sections/Hero.astro';
 import Process from '../components/sections/Process.astro';
 import Services from '../components/sections/Services.astro';
 import Work from '../components/sections/Work.astro';
-import CinematicVideos from '../components/ui/CinematicVideos.astro';
-import SectionTransition from '../components/ui/SectionTransition.astro';
 import { site } from '../data/site';
 ---
 
@@ -15,32 +13,10 @@ import { site } from '../data/site';
   title={`${site.shortName} — ${site.tagline}`}
   description={site.homeDescription}
 >
-  <div class="cinematic-page">
-    <CinematicVideos />
-    <div class="cinematic-page__content">
-      <Hero />
-      <SectionTransition />
-      <Work />
-      <SectionTransition flip />
-      <Services />
-      <SectionTransition />
-      <Process />
-      <SectionTransition flip />
-      <AboutTeaser />
-      <SectionTransition />
-      <Contact />
-    </div>
-  </div>
+  <Hero />
+  <Work />
+  <Services />
+  <Process />
+  <AboutTeaser />
+  <Contact />
 </BaseLayout>
-
-<style>
-  .cinematic-page {
-    position: relative;
-    isolation: isolate;
-  }
-
-  .cinematic-page__content {
-    position: relative;
-    z-index: 1;
-  }
-</style>

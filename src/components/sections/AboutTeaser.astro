@@ -4,9 +4,8 @@ import SectionHead from '../ui/SectionHead.astro';
 import { about } from '../../data/about';
 ---
 
-<section class="band band--glass section-scene" data-cinematic-section="sobre-mi" id="sobre-mi" aria-labelledby="sobre-mi-heading">
+<section class="band band--alt" id="sobre-mi" aria-labelledby="sobre-mi-heading">
   <div class="page-shell">
-    <div class="section-glass">
     <SectionHead
       kicker="04 — Persona"
       heading="Sobre mí"
@@ -20,7 +19,6 @@ import { about } from '../../data/about';
         <p class="type-body-lg text-text-secondary">{about.teaserBody}</p>
         <a class="btn btn-secondary" href="/about">{about.moreLabel}</a>
       </div>
-    </div>
     </div>
   </div>
 </section>

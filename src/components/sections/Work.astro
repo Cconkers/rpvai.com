@@ -16,57 +16,47 @@ function isShowcase(project: (typeof projects)[number]): boolean {
     project.data.url.startsWith('http')
   );
 }
+
+const showcase = projects.find(isShowcase);
+const others = projects.filter((p) => !isShowcase(p));
 ---
 
-<section class="page-shell section-scene" data-cinematic-section="trabajo" id="trabajo" aria-labelledby="trabajo-heading">
-  <div class="section-glass">
+<section class="page-shell" id="trabajo" aria-labelledby="trabajo-heading">
   <SectionHead
-    kicker="01 — Prueba de oficio"
-    heading="Trabajo"
+    kicker="01 — Trabajo"
+    heading="Proyectos reales"
     headingId="trabajo-heading"
-    lead="Casos reales, no una lista de herramientas. El primero es Burbujas de Luz — pincha para ver el sitio en vivo."
+    lead="Un caso en producción. El resto llegará cuando existan URLs y capturas."
+    wide
   />
 
-  <ul class="work-grid" role="list" data-reveal-stagger>
-    {
-      projects.map((project) => (
-        <li class:list={[{ 'work-grid__showcase': isShowcase(project) }]}>
-          {isShowcase(project) ? (
-            <ShowcaseProjectCard project={project} />
-          ) : (
-            <ProjectCard project={project} />
-          )}
-        </li>
-      ))
-    }
-  </ul>
-  </div>
+  {showcase && <ShowcaseProjectCard project={showcase} />}
+
+  {
+    others.length > 0 && (
+      <ul class="work-grid" role="list" data-reveal-stagger>
+        {
+          others.map((project) => (
+            <li>
+              <ProjectCard project={project} />
+            </li>
+          ))
+        }
+      </ul>
+    )
+  }
 </section>
 
 <style>
   .work-grid {
     display: grid;
     gap: var(--space-6);
-    margin: 0;
+    margin: var(--space-12) 0 0;
     padding: 0;
     list-style: none;
   }
 
-  .work-grid > li {
-    min-width: 0;
-  }
-
-  .work-grid__showcase {
-    grid-column: 1 / -1;
-  }
-
   @media (min-width: 768px) {
-    .work-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-
-  @media (min-width: 1024px) {
     .work-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }

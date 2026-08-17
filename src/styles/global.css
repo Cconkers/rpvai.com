@@ -317,9 +317,9 @@ main {
 
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-    border-color: color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-border-strong);
   }
 }
 
@@ -348,43 +348,6 @@ main {
 .band--alt {
   background: var(--color-background-alt);
   border-block: 1px solid var(--color-border);
-}
-
-.band--glass {
-  background: color-mix(in srgb, var(--color-background-alt) 55%, transparent);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-block: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
-}
-
-.section-scene {
-  position: relative;
-}
-
-.section-glass {
-  padding: clamp(var(--space-6), 4vw, var(--space-10));
-  border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--color-rpv-white) 76%, transparent);
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
-  border: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent);
-  box-shadow: var(--shadow-xl);
-}
-
-@media (max-width: 767px) {
-  .section-glass {
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .cinematic-page .section-glass,
-  .cinematic-page .band--glass {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background: var(--color-surface);
-  }
 }
 
 .prose {

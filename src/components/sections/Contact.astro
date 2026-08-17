@@ -1,11 +1,16 @@
 ---
-import SectionHead from '../ui/SectionHead.astro';
-import { briefItems, contactLead, emailCtaLabel, mailtoHref, whatsappHref } from '../../data/contact';
-import { site } from '../../data/site';
+import SectionHead from "../ui/SectionHead.astro";
+import {
+  briefItems,
+  contactLead,
+  emailCtaLabel,
+  mailtoHref,
+  whatsappHref,
+} from "../../data/contact";
+import { site } from "../../data/site";
 ---
 
-<section class="page-shell section-scene" data-cinematic-section="contacto" id="contacto" aria-labelledby="contacto-heading">
-  <div class="section-glass">
+<section class="page-shell" id="contacto" aria-labelledby="contacto-heading">
   <SectionHead
     kicker="05 — Empezar"
     heading="Contacto"
@@ -18,7 +23,7 @@ import { site } from '../../data/site';
       briefItems.map((item, index) => (
         <li class="card brief-item">
           <span class="brief-item__n" aria-hidden="true">
-            {String(index + 1).padStart(2, '0')}
+            {String(index + 1).padStart(2, "0")}
           </span>
           <h3 class="type-h3">{item.title}</h3>
           <p class="type-body text-text-secondary">{item.body}</p>
@@ -40,10 +45,8 @@ import { site } from '../../data/site';
   </div>
 
   <p class="type-small text-muted contact-mail">
-    También puedes escribir a
-    <a href={mailtoHref}>{site.email}</a>
+    También puedes escribir a <a href={mailtoHref}>{site.email}</a>
   </p>
-  </div>
 </section>
 
 <style>

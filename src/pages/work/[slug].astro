@@ -1,7 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { previewForSlug } from '../../data/projectPreviews';
 import { site } from '../../data/site';
 
 export async function getStaticPaths() {
@@ -18,8 +20,9 @@ interface Props {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
-const { title, year, role, stack, url, summary } = project.data;
+const { title, year, role, stack, url, summary, slug } = project.data;
 const liveUrl = url.startsWith('http') ? url : null;
+const previewImage = previewForSlug(slug);
 ---
 
 <BaseLayout title={`${title} — ${site.shortName}`} description={summary} ogType="article">
@@ -43,9 +46,28 @@ const liveUrl = url.startsWith('http') ? url : null;
 
     <div class="case__shots" aria-label="Capturas del proyecto">
       <p class="type-label text-accent">Capturas</p>
-      <p class="type-body text-text-secondary">
-        Pendientes de producción o staging. No se usan mockups de stock.
-      </p>
+      {
+        previewImage ? (
+          <figure class="case__figure">
+            <Image
+              src={previewImage}
+              alt={`Captura del hero de ${title}`}
+              widths={[640, 960, 1280]}
+              sizes="(min-width: 1024px) 960px, 100vw"
+              loading="lazy"
+              decoding="async"
+              class="case__shot"
+            />
+            <figcaption class="type-small text-muted">
+              Hero en producción — {liveUrl?.replace(/^https?:\/\//, '')}
+            </figcaption>
+          </figure>
+        ) : (
+          <p class="type-body text-text-secondary">
+            Pendientes de producción o staging. No se usan mockups de stock.
+          </p>
+        )
+      }
     </div>
 
     <div class="case__actions">
@@ -101,10 +123,27 @@ const liveUrl = url.startsWith('http') ? url : null;
 
   .case__shots {
     margin: var(--space-12) 0;
-    padding: var(--space-8) var(--space-6);
-    border: 1px dashed var(--color-border-strong);
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-card);
     background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .case__figure {
+    margin: var(--space-4) 0 0;
+  }
+
+  .case__shot {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+  }
+
+  .case__figure figcaption {
+    margin-top: var(--space-3);
   }
 
   .case__shots .type-label {

@@ -4,14 +4,15 @@ interface Props {
   heading: string;
   headingId: string;
   lead?: string;
+  wide?: boolean;
 }
 
-const { kicker, heading, headingId, lead } = Astro.props;
+const { kicker, heading, headingId, lead, wide = false } = Astro.props;
 ---
 
-<header class="section-head" data-reveal>
+<header class:list={['section-head', { 'section-head--wide': wide }]} data-reveal>
   <p class="type-label text-accent section-head__kicker">{kicker}</p>
-  <h2 class="type-h2" id={headingId}>{heading}</h2>
+  <h2 class="section-head__title" id={headingId}>{heading}</h2>
   {
     lead && (
       <p class="type-body-lg text-text-secondary section-head__lead">{lead}</p>
@@ -21,35 +22,31 @@ const { kicker, heading, headingId, lead } = Astro.props;
 
 <style>
   .section-head {
+    margin-bottom: var(--space-12);
+    padding-block: var(--space-6) var(--space-8);
+    border-block: 1px solid var(--color-border);
     max-width: var(--prose-max);
-    margin-bottom: var(--space-10);
-    padding-top: var(--space-4);
-    position: relative;
   }
 
-  .section-head::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 3rem;
-    height: 2px;
-    background: linear-gradient(
-      90deg,
-      var(--color-accent),
-      color-mix(in srgb, var(--color-accent) 20%, transparent)
-    );
+  .section-head--wide {
+    max-width: none;
   }
 
   .section-head__kicker {
-    margin: 0 0 var(--space-3);
+    margin: 0 0 var(--space-4);
   }
 
-  .section-head .type-h2 {
+  .section-head__title {
     margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: var(--tracking-tight);
   }
 
   .section-head__lead {
-    margin: var(--space-4) 0 0;
+    margin: var(--space-5) 0 0;
+    max-width: 48ch;
   }
 </style>

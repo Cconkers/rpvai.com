@@ -154,6 +154,13 @@ Cuerpo: contexto, enfoque spec-driven, resultado (cualitativo si no hay métrica
 - **Incluye:** tarjeta premium clic → `light-bubbles-laundry.vercel.app`; caso interno secundario.
 - **SPEC:** [`012-showcase-burbujas.md`](./012-showcase-burbujas.md)
 
+### SPEC-013 — Reset editorial + captura Burbujas
+
+- **Estado:** `Done` (agosto 2026)
+- **Ruta:** `/` home, showcase, hero
+- **Incluye:** quitar vídeo full-page/glass; hero editorial; captura real; layout revista.
+- **SPEC:** [`013-editorial-reset.md`](./013-editorial-reset.md)
+
 ---
 
 ## Grupo E — Después del MVP
