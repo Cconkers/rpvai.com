@@ -45,7 +45,9 @@ Node >= 22.12.0.
 
 - CI: [`.github/workflows/ci.yml`](.github/workflows/ci.yml) — `check` + `build` en cada push.
 - Hosting: [`vercel.json`](vercel.json) — estático, carpeta `dist/`.
-- Autodeploy: [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) en `develop` (producción) y `cursor/**` (preview).
+- **Autodeploy:** integración GitHub en el [dashboard de Vercel](https://vercel.com/dashboard)
+  (no hay workflow de deploy en Actions). Enlaza el repo [`Cconkers/rpvai`](https://github.com/Cconkers/rpvai)
+  y pon **Production Branch** = `develop`. Cada push a `develop` o a `cursor/**` genera preview o producción.
 
-Secretos de GitHub Actions: `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`.
-También se puede enlazar el repo en el dashboard de Vercel (producción = `develop`), igual que Burbujas.
+Si el proyecto Vercel sigue apuntando al slug antiguo (`rpvai.com`) o al repo desconectado,
+reconecta el git tras el rename (D-034).

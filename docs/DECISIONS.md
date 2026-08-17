@@ -819,12 +819,15 @@ modelo para `rpvai.com`.
 - `package-lock.json` no se versiona; CI usa `npm install` (igual que Burbujas).
 - Hosting: Vercel, output estático `dist/`. Sin `@astrojs/vercel` hasta que haga falta SSR.
 - Producción: rama `develop` (default del repo). Previews: resto de ramas.
-- Enlazar el proyecto Vercel al repo `Cconkers/rpvai.com` en el dashboard (el token de
-  Actions no sustituye esa conexión).
+- **Deploy:** integración GitHub ↔ Vercel en el dashboard (como Burbujas). **No** hay workflow
+  de `vercel deploy` en Actions; los secretos `VERCEL_*` son opcionales y no sustituyen
+  enlazar el repo en Vercel.
 
 ### Motivo
 
 Misma puerta de calidad y el mismo hosting que el otro producto Astro del propietario.
+El workflow con `vercel pull --token=` fallaba si `VERCEL_TOKEN` no estaba definido en
+GitHub; el patrón Burbujas no usa ese workflow.
 
 ### Relacionado
 

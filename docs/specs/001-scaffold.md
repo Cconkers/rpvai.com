@@ -36,6 +36,7 @@ Incluye:
 - `vercel.json` estático (framework astro, `dist/`)
 - GitHub Actions CI: `npm install` + `npm run check` + `npm run build` (como Burbujas)
 - Rama `cursor/spec-001`, merge a `develop` si check y build pasan
+- Deploy: integración GitHub de Vercel (no workflow `deploy.yml` en Actions)
 
 Excluye:
 
