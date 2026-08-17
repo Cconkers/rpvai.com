@@ -1,0 +1,313 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Icon from './Icon.astro';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { title, year, role, summary, stack, url, slug } = project.data;
+const liveUrl = url.startsWith('http') ? url : null;
+const caseHref = `/work/${slug}/`;
+---
+
+{
+  liveUrl && (
+    <article class="showcase-card" data-reveal>
+      <a
+        class="showcase-card__live"
+        href={liveUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${title} — abrir sitio en vivo (Vercel)`}
+      >
+        <div class="showcase-card__inner">
+          <div class="showcase-card__chrome" aria-hidden="true">
+            <span class="showcase-card__dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+            <span class="showcase-card__url">{liveUrl.replace(/^https?:\/\//, '')}</span>
+            <span class="showcase-card__live-badge type-label">En vivo</span>
+          </div>
+
+          <div class="showcase-card__preview" aria-hidden="true">
+            <div class="showcase-card__preview-glow"></div>
+            <div class="showcase-card__preview-content">
+              <span class="showcase-card__preview-mark type-label">Caso real</span>
+              <p class="showcase-card__preview-title">{title}</p>
+              <ul class="showcase-card__stack" role="list">
+                {stack.slice(0, 3).map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div class="showcase-card__body">
+            <p class="type-label text-accent">
+              {year} · {role}
+            </p>
+            <h3 class="type-h2 showcase-card__title">{title}</h3>
+            <p class="type-body-lg text-text-secondary">{summary}</p>
+            <span class="showcase-card__cta">
+              Abrir sitio en vivo
+              <Icon name="external" size={18} />
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a class="btn btn-secondary showcase-card__case" href={caseHref}>
+        Leer el caso
+      </a>
+    </article>
+  )
+}
+
+<style>
+  .showcase-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    perspective: 1400px;
+  }
+
+  .showcase-card__live {
+    display: block;
+    position: relative;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+    border-radius: var(--radius-lg);
+    outline: none;
+  }
+
+  .showcase-card__inner {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    border: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
+    background: linear-gradient(
+      155deg,
+      var(--color-surface) 0%,
+      color-mix(in srgb, var(--color-accent-subtle) 28%, var(--color-surface)) 100%
+    );
+    box-shadow: var(--shadow-lg);
+    transform-style: preserve-3d;
+    transition:
+      transform var(--duration-luxe) var(--ease-luxe),
+      box-shadow var(--duration-luxe) var(--ease-luxe),
+      border-color var(--duration-base) var(--ease-out);
+  }
+
+  .showcase-card__live::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--color-accent) 55%, transparent),
+      transparent 45%,
+      color-mix(in srgb, var(--color-rpv-copper-300) 40%, transparent)
+    );
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity var(--duration-slow) var(--ease-luxe);
+    pointer-events: none;
+  }
+
+  .showcase-card__chrome {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+    background: color-mix(in srgb, var(--color-background-alt) 90%, transparent);
+  }
+
+  .showcase-card__dots {
+    display: inline-flex;
+    gap: 0.35rem;
+  }
+
+  .showcase-card__dots span {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: var(--radius-full);
+    background: var(--color-border-strong);
+  }
+
+  .showcase-card__dots span:first-child {
+    background: color-mix(in srgb, var(--color-rpv-copper-400) 70%, var(--color-border));
+  }
+
+  .showcase-card__url {
+    flex: 1;
+    min-width: 0;
+    font-size: var(--text-small);
+    color: var(--color-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .showcase-card__live-badge {
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--color-accent-subtle) 85%, transparent);
+    color: var(--color-rpv-copper-800);
+    letter-spacing: 0.06em;
+  }
+
+  .showcase-card__preview {
+    position: relative;
+    min-height: clamp(10rem, 28vw, 14rem);
+    padding: var(--space-8);
+    overflow: hidden;
+    background:
+      radial-gradient(
+        ellipse 80% 70% at 20% 20%,
+        color-mix(in srgb, var(--color-rpv-copper-100) 70%, transparent),
+        transparent 65%
+      ),
+      linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--color-rpv-white) 90%, transparent),
+        color-mix(in srgb, var(--color-background-alt) 80%, transparent)
+      );
+  }
+
+  .showcase-card__preview-glow {
+    position: absolute;
+    inset: auto -20% -40% -20%;
+    height: 70%;
+    background: radial-gradient(
+      ellipse at center,
+      color-mix(in srgb, var(--color-rpv-copper-300) 35%, transparent),
+      transparent 70%
+    );
+    transition: transform var(--duration-luxe) var(--ease-luxe);
+  }
+
+  .showcase-card__preview-content {
+    position: relative;
+    z-index: 1;
+    max-width: 36ch;
+  }
+
+  .showcase-card__preview-mark {
+    display: inline-block;
+    margin-bottom: var(--space-3);
+    color: var(--color-accent);
+  }
+
+  .showcase-card__preview-title {
+    margin: 0 0 var(--space-4);
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    letter-spacing: var(--tracking-tight);
+    line-height: 1.1;
+  }
+
+  .showcase-card__stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .showcase-card__stack li {
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-pill);
+    border: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
+    background: color-mix(in srgb, var(--color-rpv-white) 75%, transparent);
+    font-size: var(--text-small);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+  }
+
+  .showcase-card__body {
+    padding: var(--space-6);
+  }
+
+  .showcase-card__body .type-label {
+    margin: 0 0 var(--space-3);
+  }
+
+  .showcase-card__title {
+    margin: 0 0 var(--space-4);
+  }
+
+  .showcase-card__body .type-body-lg {
+    margin: 0;
+    max-width: 52ch;
+  }
+
+  .showcase-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-6);
+    font-weight: 700;
+    color: var(--color-accent);
+    transition: transform var(--duration-base) var(--ease-luxe);
+  }
+
+  .showcase-card__case {
+    align-self: flex-start;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .showcase-card__live:hover .showcase-card__inner,
+    .showcase-card__live:focus-visible .showcase-card__inner {
+      transform: rotateX(2deg) rotateY(-2deg) translateY(-10px);
+      box-shadow: var(--shadow-xl);
+      border-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-border));
+    }
+
+    .showcase-card__live:hover::before,
+    .showcase-card__live:focus-visible::before {
+      opacity: 1;
+    }
+
+    .showcase-card__live:hover .showcase-card__preview-glow,
+    .showcase-card__live:focus-visible .showcase-card__preview-glow {
+      transform: translateY(-6%) scale(1.05);
+    }
+
+    .showcase-card__live:hover .showcase-card__cta,
+    .showcase-card__live:focus-visible .showcase-card__cta {
+      transform: translateX(4px);
+    }
+  }
+
+  .showcase-card__live:focus-visible {
+    box-shadow: var(--shadow-focus);
+    border-radius: var(--radius-lg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .showcase-card__inner,
+    .showcase-card__preview-glow,
+    .showcase-card__cta {
+      transition: none;
+    }
+
+    .showcase-card__live:hover .showcase-card__inner,
+    .showcase-card__live:focus-visible .showcase-card__inner {
+      transform: none;
+    }
+  }
+</style>

@@ -138,6 +138,24 @@ Cuerpo: contexto, enfoque spec-driven, resultado (cualitativo si no hay métrica
 
 ---
 
+## Grupo F — Elevación visual (post-MVP)
+
+### SPEC-011 — Capa cinematográfica y motion premium
+
+- **Estado:** `Done` (agosto 2026)
+- **Ruta:** `/` home
+- **Incluye:** vídeo HD de fondo, crossfade, hero fullscreen, glass panels, motion scripts.
+- **SPEC:** [`011-premium-cinematic.md`](./011-premium-cinematic.md)
+
+### SPEC-012 — Tarjeta showcase Burbujas (Vercel en vivo)
+
+- **Estado:** `Done` (agosto 2026)
+- **Ruta:** `/#trabajo`, `ShowcaseProjectCard.astro`
+- **Incluye:** tarjeta premium clic → `light-bubbles-laundry.vercel.app`; caso interno secundario.
+- **SPEC:** [`012-showcase-burbujas.md`](./012-showcase-burbujas.md)
+
+---
+
 ## Grupo E — Después del MVP
 
 No numerar hasta abrirlas. Cada una exige SPEC + decisión si toca arquitectura.
@@ -149,7 +167,7 @@ No numerar hasta abrirlas. Cada una exige SPEC + decisión si toca arquitectura.
 | i18n EN | D-018 |
 | Calendly | Sustituye o acompaña WhatsApp solo con decisión |
 | Formulario Resend | D-011 |
-| Capturas Burbujas | Producción o staging |
+| Capturas Burbujas | Preview en tarjeta showcase; capturas HD en case study |
 | Analytics | Umami o Plausible |
 | Dominio | `rpv.dev` / `rubenpalomo.dev` u otro `[PLACEHOLDER]` |
 

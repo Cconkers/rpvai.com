@@ -6,7 +6,7 @@ stack:
   - Astro
   - Tailwind CSS v4
   - TypeScript
-url: "[PLACEHOLDER: URL de producción o staging]"
+url: "https://light-bubbles-laundry.vercel.app"
 featured: true
 placeholder: false
 year: 2026
@@ -28,7 +28,8 @@ improvisar en el código.
 
 ## Resultado
 
-Aún no hay métricas públicas ni URL de producción confirmada para enlazar aquí. Lo que sí
+Aún no hay métricas públicas. El sitio está desplegado en
+[light-bubbles-laundry.vercel.app](https://light-bubbles-laundry.vercel.app). Lo que sí
 está cerrado es el oficio: un sitio de negocio real —contenido, rendimiento y un proceso
 predecible— no un demo de framework.
 
