@@ -1,18 +1,29 @@
 ---
+import Icon from '../ui/Icon.astro';
+import SectionHead from '../ui/SectionHead.astro';
 import { services } from '../../data/offer';
 ---
 
 <section class="page-shell" id="servicios" aria-labelledby="servicios-heading">
-  <h2 class="type-h2" id="servicios-heading">Servicios</h2>
-  <p class="type-body-lg text-text-secondary section-lead">
-    Desarrollo web por proyecto: la interfaz, las APIs, la IA y los datos que tu producto
-    necesite. No vendo packs de landing.
-  </p>
+  <SectionHead
+    kicker="02 — Oferta"
+    heading="Servicios"
+    headingId="servicios-heading"
+    lead="Desarrollo web por proyecto: la interfaz, las APIs, la IA y los datos que tu producto necesite. No vendo packs de landing."
+  />
 
   <ul class="service-grid" role="list">
     {
-      services.map((service) => (
+      services.map((service, index) => (
         <li class="card">
+          <div class="card__meta">
+            <span class="card__index" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <span class="card__icon">
+              <Icon name={service.icon} size={22} />
+            </span>
+          </div>
           <h3 class="type-h3">{service.title}</h3>
           <p class="type-body text-text-secondary">{service.body}</p>
         </li>
@@ -22,16 +33,38 @@ import { services } from '../../data/offer';
 </section>
 
 <style>
-  .section-lead {
-    margin: var(--space-4) 0 var(--space-8);
-  }
-
   .service-grid {
     display: grid;
     gap: var(--space-6);
     margin: 0;
     padding: 0;
     list-style: none;
+  }
+
+  .card__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-5);
+  }
+
+  .card__index {
+    font-family: var(--font-display);
+    font-size: var(--text-small);
+    font-weight: 600;
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-accent);
+  }
+
+  .card__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--color-accent);
+    background: var(--color-accent-subtle);
+    border-radius: var(--radius-md);
   }
 
   @media (min-width: 768px) {

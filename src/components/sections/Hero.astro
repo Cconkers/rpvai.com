@@ -12,6 +12,8 @@ import { site } from '../../data/site';
     <div class="hero__content">
       <p class="chip">{site.availabilityLabel}</p>
 
+      <p class="hero__name">{site.shortName}</p>
+
       <h1 id="hero-heading" class="hero__title type-display">
         {site.heroHeadline}
       </h1>
@@ -29,6 +31,9 @@ import { site } from '../../data/site';
         >
           {site.ctaLabel}
         </a>
+        <a class="btn btn-secondary" href={site.ctaSecondaryHref}>
+          {site.ctaSecondaryLabel}
+        </a>
       </div>
     </div>
   </div>
@@ -36,7 +41,23 @@ import { site } from '../../data/site';
 
 <style>
   .hero {
-    padding-block: var(--space-8) var(--space-12);
+    position: relative;
+    isolation: isolate;
+    padding-block: var(--space-10) var(--space-16);
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-accent-subtle) 70%, var(--color-background)) 0%,
+      var(--color-background) 78%
+    );
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 1px;
+    background: var(--color-border);
   }
 
   .hero__inner {
@@ -60,9 +81,18 @@ import { site } from '../../data/site';
     gap: var(--space-4);
   }
 
+  .hero__name {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--text-h3);
+    font-weight: 600;
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-text-secondary);
+  }
+
   .hero__title {
     margin: 0;
-    max-width: 16ch;
+    max-width: 18ch;
   }
 
   .hero__support {
@@ -70,35 +100,37 @@ import { site } from '../../data/site';
   }
 
   .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
     margin-top: var(--space-2);
   }
 
   @media (min-width: 768px) {
     .hero {
-      padding-block: var(--space-12) var(--space-16);
+      padding-block: var(--space-16) var(--space-20);
     }
 
     .hero__inner {
-      grid-template-columns: auto 1fr;
-      gap: var(--space-10);
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: var(--space-12);
+      align-items: center;
     }
 
     .hero__portrait {
       justify-content: flex-start;
+      padding-inline-end: var(--space-4);
+      border-right: 1px solid var(--color-border);
     }
 
     .hero__title {
-      max-width: 14ch;
+      max-width: 16ch;
     }
   }
 
   @media (min-width: 1024px) {
     .hero__inner {
-      gap: var(--space-12);
-    }
-
-    .hero__title {
-      max-width: 12ch;
+      gap: var(--space-16);
     }
   }
 </style>

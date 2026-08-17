@@ -1,0 +1,72 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { title, year, role, summary, featured, placeholder, slug } = project.data;
+const href = placeholder ? undefined : `/work/${slug}/`;
+---
+
+{
+  href ? (
+    <a
+      class:list={['card', 'card--link', { 'card-featured': featured }]}
+      href={href}
+    >
+      <p class="type-label text-accent">{year} · {role}</p>
+      <h3 class="type-h3">{title}</h3>
+      <p class="type-body text-text-secondary">{summary}</p>
+      <span class="card__cta type-small">Ver el caso</span>
+    </a>
+  ) : (
+    <div class="card card--slot" aria-disabled="true">
+      <p class="type-label text-accent">Próximamente</p>
+      <h3 class="type-h3">Proyecto reservado</h3>
+      <p class="type-body text-text-secondary">{summary}</p>
+    </div>
+  )
+}
+
+<style>
+  .card--link {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow var(--duration-base) var(--ease-out);
+  }
+
+  .card--link .type-label,
+  .card--slot .type-label {
+    margin: 0 0 var(--space-3);
+  }
+
+  .card--link .type-h3,
+  .card--slot .type-h3 {
+    margin-bottom: var(--space-3);
+  }
+
+  .card__cta {
+    margin-top: auto;
+    padding-top: var(--space-6);
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+
+  .card--slot {
+    height: 100%;
+    border-style: dashed;
+    background: transparent;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .card--link:hover {
+      box-shadow: var(--shadow-md);
+    }
+  }
+</style>

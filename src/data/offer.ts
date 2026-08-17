@@ -1,22 +1,27 @@
 export const services = [
   {
     title: 'Frontend',
+    icon: 'layout' as const,
     body: 'Interfaces nuevas o evolución de las que ya tienes: accesibles, rápidas y mantenibles. Angular si el producto lo pide; Astro u otros según el encargo.',
   },
   {
     title: 'UX/UI',
+    icon: 'flow' as const,
     body: 'Flujos más claros, jerarquía, componentes y responsive. No es un rebranding de marca desde cero.',
   },
   {
     title: 'Integraciones y APIs',
+    icon: 'nodes' as const,
     body: 'Conectar la web con pagos, CRM, reservas o las APIs que ya uses. No se asume el SLA de un sistema ajeno.',
   },
   {
     title: 'IA aplicada',
+    icon: 'orbit' as const,
     body: 'Asistentes, automatización o generación acotada, con trabajo real que hacer. No un chatbot de adorno.',
   },
   {
     title: 'Web con datos',
+    icon: 'data' as const,
     body: 'Frontend y persistencia: base de datos, auth básico y CRUD. El backend se apoya en IA; el núcleo de oficio es frontend.',
   },
 ] as const;

@@ -1,0 +1,123 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../data/site';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects', ({ data }) => !data.placeholder);
+  return projects.map((project) => ({
+    params: { slug: project.data.slug },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { title, year, role, stack, url, summary } = project.data;
+const liveUrl = url.startsWith('http') ? url : null;
+---
+
+<BaseLayout title={`${title} — ${site.shortName}`} description={summary}>
+  <article class="page-shell case">
+    <p class="type-label text-accent">{year} · {role}</p>
+    <h1 class="type-h1">{title}</h1>
+
+    {
+      stack.length > 0 && (
+        <ul class="case__stack" role="list">
+          {stack.map((item) => (
+            <li class="case__tag type-small">{item}</li>
+          ))}
+        </ul>
+      )
+    }
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <div class="case__shots" aria-label="Capturas del proyecto">
+      <p class="type-label text-accent">Capturas</p>
+      <p class="type-body text-text-secondary">
+        Pendientes de producción o staging. No se usan mockups de stock.
+      </p>
+    </div>
+
+    <div class="case__actions">
+      {
+        liveUrl && (
+          <a class="btn btn-secondary" href={liveUrl} target="_blank" rel="noopener noreferrer">
+            Ver el sitio
+          </a>
+        )
+      }
+      <a
+        class="btn btn-primary"
+        href={site.whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {site.ctaLabel}
+      </a>
+      <a class="btn btn-secondary" href="/#trabajo">
+        Volver al trabajo
+      </a>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .case .type-label {
+    margin: 0;
+  }
+
+  .case .type-h1 {
+    margin-top: var(--space-3);
+    max-width: 18ch;
+  }
+
+  .case__stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: 0 0 var(--space-10);
+    padding: 0;
+    list-style: none;
+  }
+
+  .case__tag {
+    margin: 0;
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    background: var(--color-surface);
+    color: var(--color-text-secondary);
+  }
+
+  .case__shots {
+    margin: var(--space-12) 0;
+    padding: var(--space-8) var(--space-6);
+    border: 1px dashed var(--color-border-strong);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+  }
+
+  .case__shots .type-label {
+    margin-bottom: var(--space-3);
+  }
+
+  .case__shots .type-body {
+    margin: 0;
+  }
+
+  .case__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+</style>

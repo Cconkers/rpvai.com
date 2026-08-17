@@ -68,12 +68,13 @@ El kit documental (Grupo A) está hecho, incluida la decisión de sustituir el r
 
 ### SPEC-005 — Case study Burbujas + listado
 
-- **Estado:** `Planned`
+- **Estado:** `Done` (agosto 2026)
 - **Ruta:** `/work/burbujas-de-luz`, listado en home
 - **Incluye:** content collection, plantilla de proyecto, caso Burbujas (problema →
   decisión → resultado). URL y capturas `[PLACEHOLDER]` si no están. Dos cards hueco
   para proyectos 2 y 3.
 - **Excluye:** Portal del Donante (salvo decisión nueva), screenshots de BME/Bosonit.
+- **SPEC:** [`005-trabajo-burbujas.md`](./005-trabajo-burbujas.md)
 
 **Plantilla mínima de un proyecto (frontmatter):**
 

@@ -1,0 +1,41 @@
+---
+interface Props {
+  kicker: string;
+  heading: string;
+  headingId: string;
+  lead?: string;
+}
+
+const { kicker, heading, headingId, lead } = Astro.props;
+---
+
+<header class="section-head">
+  <p class="type-label text-accent">{kicker}</p>
+  <h2 class="type-h2" id={headingId}>{heading}</h2>
+  {
+    lead && (
+      <p class="type-body-lg text-text-secondary section-head__lead">{lead}</p>
+    )
+  }
+</header>
+
+<style>
+  .section-head {
+    max-width: var(--prose-max);
+    margin-bottom: var(--space-10);
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .section-head .type-label {
+    margin: 0 0 var(--space-3);
+  }
+
+  .section-head .type-h2 {
+    margin: 0;
+  }
+
+  .section-head__lead {
+    margin: var(--space-4) 0 0;
+  }
+</style>

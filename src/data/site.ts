@@ -8,7 +8,9 @@ export const site = {
   ctaLabel: 'Cuéntame tu proyecto',
   availabilityLabel: 'Aceptando proyectos',
   heroHeadline: 'Desarrollo web: interfaz, APIs, IA y datos',
-  heroSupport: 'Brief gratuito y propuesta en 48 horas.',
+  heroSupport: 'Brief gratuito y propuesta en 48 horas. Alcance cerrado, sin tarifas por hora.',
+  ctaSecondaryLabel: 'Ver servicios',
+  ctaSecondaryHref: '/#servicios',
   homeDescription:
     'Desarrollo web freelance: frontend, UX/UI, integraciones, IA y webs con datos. Brief gratuito y propuesta en 48 horas.',
   githubUrl: 'https://github.com/Cconkers',

@@ -1,0 +1,63 @@
+---
+import { getCollection } from 'astro:content';
+import ProjectCard from '../ui/ProjectCard.astro';
+import SectionHead from '../ui/SectionHead.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => {
+  if (a.data.featured === b.data.featured) return 0;
+  return a.data.featured ? -1 : 1;
+});
+---
+
+<section class="page-shell" id="trabajo" aria-labelledby="trabajo-heading">
+  <SectionHead
+    kicker="01 — Prueba de oficio"
+    heading="Trabajo"
+    headingId="trabajo-heading"
+    lead="Casos reales, no una lista de herramientas. El primero es Burbujas de Luz."
+  />
+
+  <ul class="work-grid" role="list">
+    {
+      projects.map((project) => (
+        <li class:list={[{ 'work-grid__featured': project.data.featured }]}>
+          <ProjectCard project={project} />
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .work-grid {
+    display: grid;
+    gap: var(--space-6);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .work-grid > li {
+    min-width: 0;
+  }
+
+  @media (min-width: 768px) {
+    .work-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .work-grid__featured {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .work-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .work-grid__featured {
+      grid-column: auto;
+    }
+  }
+</style>

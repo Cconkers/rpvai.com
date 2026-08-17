@@ -171,10 +171,8 @@ La demo de IA **en esta misma web** no forma parte del MVP; es Grupo E del
 prueba de oficio freelance (Astro, spec-driven, contenido, SEO local). Es **un** proyecto,
 no la definición de lo que se vende.
 
-Borrador de contenido (SPEC-005 lo mueve a `src/content/projects/`):
-
-- [`docs/content/projects/burbujas-de-luz.md`](./content/projects/burbujas-de-luz.md)
-- Huecos: [`proyecto-2.md`](./content/projects/proyecto-2.md), [`proyecto-3.md`](./content/projects/proyecto-3.md)
+Borrador histórico: [`docs/content/projects/`](./content/projects/). Contenido vivo:
+[`src/content/projects/`](../src/content/projects/) (SPEC-005).
 - URL de producción: `[PLACEHOLDER]`
 - Capturas: pendientes (producción o staging)
 - ATMIRA/BME y Bosonit **no son case studies** (NDA / producto interno). Son crédito de seriedad en About.
