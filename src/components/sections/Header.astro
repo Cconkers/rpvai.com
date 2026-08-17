@@ -4,6 +4,7 @@ import { navLinks, site } from '../../data/site';
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isHome = pathname === '/';
 const isAbout = pathname === '/about';
+const overlay = isHome;
 
 function isCurrent(href: string): boolean {
   if (href === '/about') return isAbout;
@@ -12,14 +13,19 @@ function isCurrent(href: string): boolean {
 }
 ---
 
-<header class="site-header" id="site-header" role="banner">
+<header
+  class:list={['site-header', { 'site-header--overlay': overlay }]}
+  id="site-header"
+  role="banner"
+  data-header-overlay={overlay ? 'true' : undefined}
+>
   <div class="site-header__inner">
     <a
       class="site-wordmark"
       href="/"
       aria-label={`${site.name} — inicio`}
     >
-      <span class="type-label text-accent">{site.mark}</span>
+      <span class="type-label site-wordmark__mark">{site.mark}</span>
       <span class="site-wordmark__name">{site.shortName}</span>
     </a>
 
@@ -41,7 +47,7 @@ function isCurrent(href: string): boolean {
     </nav>
 
     <a
-      class="btn btn-primary site-header__cta"
+      class="site-header__cta btn btn-pill-dark"
       href={site.whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
@@ -100,7 +106,7 @@ function isCurrent(href: string): boolean {
           ))
         }
         <a
-          class="btn btn-primary site-nav-panel__cta"
+          class="btn btn-pill-dark site-nav-panel__cta"
           href={site.whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
@@ -117,20 +123,21 @@ function isCurrent(href: string): boolean {
     position: sticky;
     top: 0;
     z-index: 50;
-    background: color-mix(in srgb, var(--color-background) 82%, transparent);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid transparent;
+    background: var(--color-paper-white);
+    border-bottom: 1px solid var(--color-iron);
     transition:
-      background-color var(--duration-slow) var(--ease-luxe),
-      border-color var(--duration-slow) var(--ease-luxe),
-      box-shadow var(--duration-slow) var(--ease-luxe);
+      background-color var(--duration-slow) var(--ease-out),
+      border-color var(--duration-slow) var(--ease-out);
   }
 
-  .site-header.is-scrolled {
-    background: color-mix(in srgb, var(--color-rpv-white) 88%, transparent);
-    border-bottom-color: var(--color-border);
-    box-shadow: var(--shadow-sm);
+  .site-header--overlay {
+    background: transparent;
+    border-bottom-color: transparent;
+  }
+
+  .site-header--overlay.is-scrolled {
+    background: var(--color-paper-white);
+    border-bottom-color: var(--color-iron);
   }
 
   .site-header__inner {
@@ -154,12 +161,17 @@ function isCurrent(href: string): boolean {
     margin-right: auto;
   }
 
+  .site-wordmark__mark {
+    color: var(--color-muted);
+    letter-spacing: 0.06em;
+  }
+
   .site-wordmark__name {
     font-family: var(--font-display);
     font-size: 1.125rem;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.2;
-    letter-spacing: var(--tracking-tight);
+    letter-spacing: -0.02em;
   }
 
   .site-nav-desktop {
@@ -173,31 +185,50 @@ function isCurrent(href: string): boolean {
     align-items: center;
     min-height: 44px;
     padding-inline: var(--space-3);
-    font-size: var(--text-small);
-    font-weight: 600;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
     color: var(--color-text-secondary);
     text-decoration: none;
     border-radius: var(--radius-md);
-    transition:
-      color var(--duration-fast) var(--ease-out),
-      transform var(--duration-base) var(--ease-luxe);
+    transition: color var(--duration-fast) var(--ease-out);
   }
 
   @media (hover: hover) and (pointer: fine) {
     .site-nav-link:hover {
       color: var(--color-text);
-      transform: translateY(-1px);
     }
   }
 
   .site-nav-link.is-active {
     color: var(--color-text);
-    box-shadow: inset 0 -2px 0 var(--color-accent);
+    box-shadow: inset 0 -2px 0 var(--color-obsidian);
     border-radius: 0;
   }
 
   .site-header__cta {
     display: none;
+  }
+
+  .site-header--overlay:not(.is-scrolled) .site-wordmark,
+  .site-header--overlay:not(.is-scrolled) .site-nav-link,
+  .site-header--overlay:not(.is-scrolled) .site-nav-toggle {
+    color: var(--color-paper-white);
+  }
+
+  .site-header--overlay:not(.is-scrolled) .site-wordmark__mark {
+    color: color-mix(in srgb, var(--color-paper-white) 72%, transparent);
+  }
+
+  .site-header--overlay:not(.is-scrolled) .site-nav-link.is-active {
+    box-shadow: inset 0 -2px 0 var(--color-paper-white);
+  }
+
+  .site-header--overlay:not(.is-scrolled) .site-header__cta {
+    background: var(--color-paper-white);
+    color: var(--color-obsidian);
+    border-color: var(--color-paper-white);
   }
 
   .site-nav-mobile {
@@ -233,7 +264,7 @@ function isCurrent(href: string): boolean {
   }
 
   .site-nav-mobile[open] .site-nav-toggle {
-    background: var(--color-background-alt);
+    background: var(--color-bone);
   }
 
   .site-nav-panel {
@@ -245,10 +276,10 @@ function isCurrent(href: string): boolean {
     gap: var(--space-1);
     min-width: min(18rem, calc(100vw - var(--gutter) * 2));
     padding: var(--space-3);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
+    background: var(--color-paper-white);
+    border: 1px solid var(--color-iron);
     border-radius: var(--radius-card);
-    box-shadow: var(--shadow-sm);
+    box-shadow: none;
   }
 
   .site-nav-panel__link {
@@ -256,7 +287,8 @@ function isCurrent(href: string): boolean {
     align-items: center;
     min-height: 44px;
     padding-inline: var(--space-4);
-    font-weight: 600;
+    font-family: var(--font-display);
+    font-weight: 500;
     color: var(--color-text-secondary);
     text-decoration: none;
     border-radius: var(--radius-md);
@@ -265,7 +297,7 @@ function isCurrent(href: string): boolean {
   .site-nav-panel__link:hover,
   .site-nav-panel__link.is-active {
     color: var(--color-text);
-    background: var(--color-background-alt);
+    background: var(--color-bone);
   }
 
   .site-nav-panel__cta {
@@ -326,6 +358,14 @@ function isCurrent(href: string): boolean {
   desktopQuery.addEventListener('change', (event) => {
     if (event.matches && details) details.open = false;
   });
+
+  const onScrollHeader = () => {
+    if (!header) return;
+    header.classList.toggle('is-scrolled', window.scrollY > 24);
+  };
+
+  window.addEventListener('scroll', onScrollHeader, { passive: true });
+  onScrollHeader();
 
   const spyOrder = [
     { href: '/', section: null as string | null },

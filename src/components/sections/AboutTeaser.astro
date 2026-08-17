@@ -14,10 +14,12 @@ import { about } from '../../data/about';
     />
 
     <div class="about-teaser" data-reveal>
-      <Portrait size="md" loading="lazy" />
+      <div class="about-teaser__portrait">
+        <Portrait size="md" loading="lazy" />
+      </div>
       <div class="about-teaser__copy">
-        <p class="type-body-lg text-text-secondary">{about.teaserBody}</p>
-        <a class="btn btn-secondary" href="/about">{about.moreLabel}</a>
+        <p class="about-teaser__body">{about.teaserBody}</p>
+        <a class="btn btn-pill-dark" href="/about">{about.moreLabel}</a>
       </div>
     </div>
   </div>
@@ -30,6 +32,17 @@ import { about } from '../../data/about';
     align-items: center;
   }
 
+  .about-teaser__portrait {
+    border-radius: 2rem;
+    border: 1px solid var(--color-iron);
+    overflow: hidden;
+    width: fit-content;
+  }
+
+  .about-teaser__portrait :global(img) {
+    display: block;
+  }
+
   .about-teaser__copy {
     display: flex;
     flex-direction: column;
@@ -37,14 +50,20 @@ import { about } from '../../data/about';
     gap: var(--space-6);
   }
 
-  .about-teaser__copy .type-body-lg {
+  .about-teaser__body {
     margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    color: var(--color-charcoal);
+    max-width: var(--prose-max);
   }
 
   @media (min-width: 768px) {
     .about-teaser {
       grid-template-columns: auto minmax(0, 1fr);
-      gap: var(--space-10);
+      gap: var(--space-12);
     }
   }
 </style>

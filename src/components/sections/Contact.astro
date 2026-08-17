@@ -10,7 +10,7 @@ import {
 import { site } from "../../data/site";
 ---
 
-<section class="page-shell" id="contacto" aria-labelledby="contacto-heading">
+<section class="page-shell page-shell--white" id="contacto" aria-labelledby="contacto-heading">
   <SectionHead
     kicker="05 — Empezar"
     heading="Contacto"
@@ -21,12 +21,12 @@ import { site } from "../../data/site";
   <ol class="brief-grid" data-reveal-stagger>
     {
       briefItems.map((item, index) => (
-        <li class="card brief-item">
+        <li class:list={['brief-item', `brief-item--${(index % 4) + 1}`]}>
           <span class="brief-item__n" aria-hidden="true">
             {String(index + 1).padStart(2, "0")}
           </span>
-          <h3 class="type-h3">{item.title}</h3>
-          <p class="type-body text-text-secondary">{item.body}</p>
+          <h3 class="brief-item__title">{item.title}</h3>
+          <p class="brief-item__body">{item.body}</p>
         </li>
       ))
     }
@@ -34,14 +34,14 @@ import { site } from "../../data/site";
 
   <div class="contact-actions" data-reveal>
     <a
-      class="btn btn-primary"
+      class="btn btn-pill-dark"
       href={whatsappHref}
       target="_blank"
       rel="noopener noreferrer"
     >
       {site.ctaLabel}
     </a>
-    <a class="btn btn-secondary" href={mailtoHref}>{emailCtaLabel}</a>
+    <a class="btn btn-pill-outline" href={mailtoHref}>{emailCtaLabel}</a>
   </div>
 
   <p class="type-small text-muted contact-mail">
@@ -62,18 +62,41 @@ import { site } from "../../data/site";
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
+    padding: var(--space-6);
+    border-radius: var(--radius-editorial);
+    border: 1px solid var(--color-iron);
   }
+
+  .brief-item--1 { background: var(--color-bone); }
+  .brief-item--2 { background: var(--color-dusty-sky); }
+  .brief-item--3 { background: var(--color-wisteria); }
+  .brief-item--4 { background: var(--color-desert-clay); }
 
   .brief-item__n {
     font-family: var(--font-display);
-    font-size: var(--text-small);
-    font-weight: 600;
-    color: var(--color-accent);
+    font-size: var(--text-caption);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--color-charcoal);
+    opacity: 0.7;
   }
 
-  .brief-item .type-h3,
-  .brief-item .type-body {
+  .brief-item__title {
     margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
+
+  .brief-item__body {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.0625rem;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    color: var(--color-charcoal);
   }
 
   .contact-actions {

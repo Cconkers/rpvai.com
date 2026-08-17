@@ -5,17 +5,21 @@ interface Props {
   headingId: string;
   lead?: string;
   wide?: boolean;
+  theme?: 'light' | 'dark';
 }
 
-const { kicker, heading, headingId, lead, wide = false } = Astro.props;
+const { kicker, heading, headingId, lead, wide = false, theme = 'light' } = Astro.props;
 ---
 
-<header class:list={['section-head', { 'section-head--wide': wide }]} data-reveal>
-  <p class="type-label text-accent section-head__kicker">{kicker}</p>
+<header
+  class:list={['section-head', { 'section-head--wide': wide, 'section-head--dark': theme === 'dark' }]}
+  data-reveal
+>
+  <p class="section-head__kicker type-label">{kicker}</p>
   <h2 class="section-head__title" id={headingId}>{heading}</h2>
   {
     lead && (
-      <p class="type-body-lg text-text-secondary section-head__lead">{lead}</p>
+      <p class="section-head__lead type-body-lg">{lead}</p>
     )
   }
 </header>
@@ -23,9 +27,10 @@ const { kicker, heading, headingId, lead, wide = false } = Astro.props;
 <style>
   .section-head {
     margin-bottom: var(--space-12);
-    padding-block: var(--space-6) var(--space-8);
-    border-block: 1px solid var(--color-border);
+    padding-block: var(--space-8) 0;
     max-width: var(--prose-max);
+    text-align: center;
+    margin-inline: auto;
   }
 
   .section-head--wide {
@@ -34,19 +39,35 @@ const { kicker, heading, headingId, lead, wide = false } = Astro.props;
 
   .section-head__kicker {
     margin: 0 0 var(--space-4);
+    color: var(--color-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
   }
 
   .section-head__title {
     margin: 0;
     font-family: var(--font-display);
-    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    font-size: clamp(2rem, 5vw, 3.625rem);
     font-weight: 700;
-    line-height: 1.08;
-    letter-spacing: var(--tracking-tight);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
   }
 
   .section-head__lead {
-    margin: var(--space-5) 0 0;
+    margin: var(--space-5) auto 0;
     max-width: 48ch;
+    color: var(--color-text-secondary);
+  }
+
+  .section-head--dark {
+    color: var(--color-paper-white);
+  }
+
+  .section-head--dark .section-head__kicker {
+    color: color-mix(in srgb, var(--color-paper-white) 70%, transparent);
+  }
+
+  .section-head--dark .section-head__lead {
+    color: color-mix(in srgb, var(--color-paper-white) 82%, transparent);
   }
 </style>

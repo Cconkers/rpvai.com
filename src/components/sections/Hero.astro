@@ -1,162 +1,128 @@
 ---
-import Portrait from '../ui/Portrait.astro';
+import { Image } from 'astro:assets';
+import heroTerrain from '../../assets/images/hero-terrain.jpg';
 import { site } from '../../data/site';
 ---
 
-<section class="hero" aria-labelledby="hero-heading">
-  <div class="hero__media" aria-hidden="true">
-    <video
-      class="hero__video"
-      autoplay
-      muted
-      loop
-      playsinline
-      disablepictureinpicture
-      preload="auto"
-    >
-      <source src="/video/hero.mp4" type="video/mp4" />
-    </video>
-    <div class="hero__wash"></div>
-  </div>
+<section class="hero-cine" id="hero" aria-labelledby="hero-heading">
+  <Image
+    src={heroTerrain}
+    alt=""
+    widths={[960, 1280, 1920]}
+    sizes="100vw"
+    loading="eager"
+    decoding="async"
+    class="hero-cine__bg"
+    aria-hidden="true"
+  />
 
-  <div class="hero__inner">
-    <div class="hero__content">
-      <p class="chip hero__enter hero__enter--1">{site.availabilityLabel}</p>
+  <div class="hero-cine__content">
+    <p class="hero-cine__eyebrow hero__enter hero__enter--1">{site.mark} · {site.tagline}</p>
 
-      <h1 id="hero-heading" class="hero__title type-display hero__enter hero__enter--2">
-        {site.heroHeadline}
-      </h1>
+    <h1 id="hero-heading" class="hero-cine__title hero__enter hero__enter--2">
+      {site.heroHeadline}
+    </h1>
 
-      <p class="hero__support type-body-lg hero__enter hero__enter--3">
-        {site.heroSupport}
-      </p>
+    <p class="hero-cine__lead hero__enter hero__enter--3">{site.heroSupport}</p>
 
-      <p class="hero__tech hero__enter hero__enter--4" aria-label="Stack tecnológico">
-        {site.heroTechLine}
-      </p>
-
-      <div class="hero__actions hero__enter hero__enter--5">
-        <a
-          class="btn btn-primary"
-          href={site.whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {site.ctaLabel}
-        </a>
-        <a class="btn btn-secondary" href={site.ctaSecondaryHref}>
-          {site.ctaSecondaryLabel}
-        </a>
-      </div>
+    <div class="hero-cine__actions hero__enter hero__enter--4">
+      <a
+        class="btn btn-pill-light"
+        href={site.whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {site.ctaLabel}
+      </a>
+      <a class="btn btn-pill-ghost" href={site.ctaSecondaryHref}>
+        {site.ctaSecondaryLabel}
+      </a>
     </div>
 
-    <div class="hero__aside hero__enter hero__enter--6">
-      <Portrait />
-      <p class="hero__name">{site.shortName}</p>
-      <p class="hero__role type-small text-muted">{site.tagline}</p>
-    </div>
+    <p class="hero-cine__tech hero__enter hero__enter--5" aria-label="Stack tecnológico">
+      {site.heroTechLine}
+    </p>
   </div>
 </section>
 
 <style>
-  .hero {
+  .hero-cine {
     position: relative;
-    isolation: isolate;
-    overflow: clip;
+    display: grid;
+    place-items: center;
     min-height: min(100svh, 56rem);
-    padding-block: calc(5rem + var(--space-8)) var(--space-16);
+    margin-top: -6.25rem;
+    padding: calc(6.25rem + var(--space-16)) var(--gutter) var(--space-20);
+    overflow: clip;
+    color: var(--color-paper-white);
+    text-align: center;
   }
 
-  .hero__media {
+  .hero-cine__bg {
     position: absolute;
     inset: 0;
-    z-index: 0;
-  }
-
-  .hero__video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 30%;
+    object-position: center 40%;
   }
 
-  .hero__wash {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(
-        105deg,
-        color-mix(in srgb, var(--color-rpv-paper) 94%, transparent) 0%,
-        color-mix(in srgb, var(--color-rpv-paper) 88%, transparent) 42%,
-        color-mix(in srgb, var(--color-rpv-paper) 72%, transparent) 100%
-      );
-  }
-
-  .hero__inner {
+  .hero-cine__content {
     position: relative;
     z-index: 1;
-    display: grid;
-    gap: var(--space-10);
-    align-items: end;
-    max-width: var(--content-max);
-    margin-inline: auto;
-    padding-inline: var(--gutter);
-  }
-
-  .hero__content {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-5);
-    max-width: 38rem;
+    align-items: center;
+    gap: var(--space-6);
+    max-width: 52rem;
   }
 
-  .hero__title {
+  .hero-cine__eyebrow {
     margin: 0;
-    max-width: 11ch;
-    color: var(--color-text);
-  }
-
-  .hero__support {
-    margin: 0;
-    max-width: 36ch;
-    color: var(--color-text-secondary);
-  }
-
-  .hero__tech {
-    margin: 0;
-    font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', monospace;
-    font-size: var(--text-small);
-    letter-spacing: 0.04em;
+    font-family: var(--font-display);
+    font-size: var(--text-caption);
+    font-weight: 500;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--color-muted);
+    opacity: 0.92;
   }
 
-  .hero__actions {
+  .hero-cine__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(2.75rem, 9vw, 5.5rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+    max-width: 14ch;
+  }
+
+  .hero-cine__lead {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.0625rem, 2.2vw, 1.1875rem);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    max-width: 42ch;
+    opacity: 0.94;
+  }
+
+  .hero-cine__actions {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: var(--space-3);
     margin-top: var(--space-2);
   }
 
-  .hero__aside {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-3);
-    text-align: center;
-  }
-
-  .hero__name {
-    margin: 0;
+  .hero-cine__tech {
+    margin: var(--space-4) 0 0;
     font-family: var(--font-display);
-    font-size: var(--text-h3);
-    font-weight: 600;
-    letter-spacing: var(--tracking-tight);
-  }
-
-  .hero__role {
-    margin: 0;
+    font-size: var(--text-caption);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    opacity: 0.75;
   }
 
   .hero__enter {
@@ -168,44 +134,18 @@ import { site } from '../../data/site';
   }
 
   :global(html.is-ready) .hero__enter--1 { opacity: 1; transform: none; transition-delay: 0ms; }
-  :global(html.is-ready) .hero__enter--2 { opacity: 1; transform: none; transition-delay: 80ms; }
-  :global(html.is-ready) .hero__enter--3 { opacity: 1; transform: none; transition-delay: 160ms; }
-  :global(html.is-ready) .hero__enter--4 { opacity: 1; transform: none; transition-delay: 220ms; }
-  :global(html.is-ready) .hero__enter--5 { opacity: 1; transform: none; transition-delay: 300ms; }
-  :global(html.is-ready) .hero__enter--6 { opacity: 1; transform: none; transition-delay: 380ms; }
+  :global(html.is-ready) .hero__enter--2 { opacity: 1; transform: none; transition-delay: 100ms; }
+  :global(html.is-ready) .hero__enter--3 { opacity: 1; transform: none; transition-delay: 200ms; }
+  :global(html.is-ready) .hero__enter--4 { opacity: 1; transform: none; transition-delay: 300ms; }
+  :global(html.is-ready) .hero__enter--5 { opacity: 1; transform: none; transition-delay: 380ms; }
 
   @media (min-width: 768px) {
-    .hero {
+    .hero-cine {
       min-height: 100svh;
-      padding-block: calc(5rem + var(--space-12)) var(--space-20);
-    }
-
-    .hero__inner {
-      grid-template-columns: minmax(0, 1.35fr) auto;
-      gap: var(--space-16);
-      align-items: center;
-    }
-
-    .hero__title {
-      max-width: 12ch;
-      font-size: clamp(2.75rem, 6.5vw, 5rem);
-    }
-
-    .hero__aside {
-      align-items: flex-end;
-      text-align: right;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero__video {
-      display: none;
-    }
-
-    .hero__wash {
-      background: var(--color-background);
-    }
-
     .hero__enter {
       opacity: 1;
       transform: none;

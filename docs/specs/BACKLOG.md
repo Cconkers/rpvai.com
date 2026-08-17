@@ -161,6 +161,13 @@ Cuerpo: contexto, enfoque spec-driven, resultado (cualitativo si no hay métrica
 - **Incluye:** quitar vídeo full-page/glass; hero editorial; captura real; layout revista.
 - **SPEC:** [`013-editorial-reset.md`](./013-editorial-reset.md)
 
+### SPEC-014 — Dirección editorial luxury (ref. 11x)
+
+- **Estado:** `Done` (agosto 2026)
+- **Ruta:** `/` home, tokens, chrome, secciones
+- **Incluye:** hero full-bleed terreno, announcement bar, header overlay, pastels, banda deep teal, pill buttons, showcase editorial.
+- **SPEC:** [`014-editorial-luxury.md`](./014-editorial-luxury.md)
+
 ---
 
 ## Grupo E — Después del MVP

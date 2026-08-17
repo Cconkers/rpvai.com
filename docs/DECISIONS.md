@@ -872,6 +872,50 @@ Un solo nombre canónico evita clones y secrets apuntando a una URL obsoleta.
 
 ---
 
+## D-035 — Dirección editorial luxury inspirada en 11x (adaptada RPV)
+
+**Fecha:** agosto 2026
+**Estado:** Accepted
+**Área:** Design
+
+### Contexto
+
+Tras SPEC-013 el diseño seguía percibiéndose «soso» frente al objetivo premium. El
+propietario aportó referencia explícita de 11x.ai: fotografía full-bleed, serif monumental,
+botones pill, bandas deep teal, tarjetas pastel, ritmo revista.
+
+D-005 fija estudio claro y acento cobre; no prohíbe hero fotográfico oscuro ni bandas
+narrativas si no copian look IA genérico ni Burbujas.
+
+### Decisión
+
+- Adoptar **patrones compositivos** de la referencia (full-bleed, pill, pastels, banda
+  `#0b252a`), no la identidad 11x.
+- Tipografía display: **Newsreader** (ya en proyecto) con tracking apretado; cuerpo largo
+  sigue **Source Sans 3** para legibilidad — no serif en todo el UI como 11x.
+- Paleta editorial convive con tokens cobre RPV: cobre queda para acentos puntuales
+  (labels legacy); CTAs principales pasan a obsidian/blanco pill.
+- Sin sombras en cards/buttons; elevación por contraste tonal y hairline `#e1dad9`.
+- Hero con fotografía warm-toned (terreno/desert hour), no vídeo full-page ni glass.
+
+### Motivo
+
+Composición editorial premium sin reintroducir el bucle de efectos (SPEC-011/013) ni
+confundir marca con un SaaS de IA ajeno.
+
+### Consecuencias
+
+- Actualizar [`DESIGN_SYSTEM.md`](./DESIGN_SYSTEM.md) y [`VISUAL_DIRECTION.md`](./VISUAL_DIRECTION.md)
+  en tarea documental posterior si hay drift.
+- Referencia guardada en `public/design/ref-11x-hero.png`.
+
+### Relacionado
+
+- D-005, D-013, SPEC-014
+- [`014-editorial-luxury.md`](./specs/014-editorial-luxury.md)
+
+---
+
 ## Cómo añadir una nueva decisión
 
 ### Cuándo registrar

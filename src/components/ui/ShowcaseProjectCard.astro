@@ -26,10 +26,6 @@ const previewImage = previewForSlug(slug);
         aria-label={`${title} — abrir sitio en vivo`}
       >
         <div class="showcase__frame" aria-hidden="true">
-          <span class="showcase__frame-bar">
-            <span class="showcase__dots"><span></span><span></span><span></span></span>
-            <span class="showcase__url">{liveUrl.replace(/^https?:\/\//, '')}</span>
-          </span>
           {
             previewImage ? (
               <Image
@@ -46,13 +42,13 @@ const previewImage = previewForSlug(slug);
             )
           }
         </div>
-        <span class="showcase__overlay type-label">Ver sitio en vivo</span>
+        <span class="showcase__badge">Ver sitio en vivo</span>
       </a>
 
       <div class="showcase__copy">
-        <p class="type-label text-accent">{year} · {role} · En producción</p>
-        <h3 class="showcase__title type-h1">{title}</h3>
-        <p class="type-body-lg text-text-secondary">{summary}</p>
+        <p class="showcase__meta">{year} · {role} · En producción</p>
+        <h3 class="showcase__title">{title}</h3>
+        <p class="showcase__summary">{summary}</p>
 
         {
           stack.length > 0 && (
@@ -66,7 +62,7 @@ const previewImage = previewForSlug(slug);
 
         <div class="showcase__actions">
           <a
-            class="btn btn-primary"
+            class="btn btn-pill-dark"
             href={liveUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -74,7 +70,7 @@ const previewImage = previewForSlug(slug);
             Abrir en Vercel
             <Icon name="external" size={18} />
           </a>
-          <a class="btn btn-secondary" href={caseHref}>Leer el caso</a>
+          <a class="btn btn-pill-outline" href={caseHref}>Leer el caso</a>
         </div>
       </div>
     </article>
@@ -84,8 +80,8 @@ const previewImage = previewForSlug(slug);
 <style>
   .showcase {
     display: grid;
-    gap: var(--space-8);
-    border-top: 1px solid var(--color-border);
+    gap: var(--space-10);
+    border-top: 1px solid var(--color-iron);
     padding-top: var(--space-10);
   }
 
@@ -94,49 +90,16 @@ const previewImage = previewForSlug(slug);
     display: block;
     text-decoration: none;
     color: inherit;
-    border-radius: var(--radius-lg);
+    border-radius: 2rem;
     overflow: hidden;
     outline: none;
-    box-shadow: var(--shadow-lg);
-    transition:
-      transform var(--duration-slow) var(--ease-luxe),
-      box-shadow var(--duration-slow) var(--ease-luxe);
+    border: 1px solid var(--color-iron);
+    transition: border-color var(--duration-base) var(--ease-out);
   }
 
   .showcase__frame {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: inherit;
+    background: var(--color-bone);
     overflow: hidden;
-  }
-
-  .showcase__frame-bar {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    padding: var(--space-3) var(--space-4);
-    border-bottom: 1px solid var(--color-border);
-    background: var(--color-background-alt);
-  }
-
-  .showcase__dots {
-    display: inline-flex;
-    gap: 0.3rem;
-  }
-
-  .showcase__dots span {
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: var(--radius-full);
-    background: var(--color-border-strong);
-  }
-
-  .showcase__url {
-    font-size: var(--text-small);
-    color: var(--color-muted);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 
   .showcase__shot {
@@ -146,30 +109,32 @@ const previewImage = previewForSlug(slug);
     aspect-ratio: 16 / 10;
     object-fit: cover;
     object-position: top center;
-    transition: transform var(--duration-luxe) var(--ease-luxe);
   }
 
   .showcase__placeholder {
     display: grid;
     place-items: center;
     min-height: 16rem;
-    background: var(--color-background-alt);
+    background: var(--color-bone);
     font-family: var(--font-display);
-    font-size: var(--text-h2);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
   }
 
-  .showcase__overlay {
+  .showcase__badge {
     position: absolute;
     inset: auto var(--space-4) var(--space-4) auto;
-    padding: var(--space-2) var(--space-4);
-    border-radius: var(--radius-pill);
-    background: color-mix(in srgb, var(--color-primary) 88%, transparent);
-    color: var(--color-text-on-fill);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-badge);
+    background: color-mix(in srgb, var(--color-obsidian) 82%, transparent);
+    color: var(--color-paper-white);
+    font-family: var(--font-display);
+    font-size: var(--text-caption);
+    font-weight: 500;
+    letter-spacing: -0.02em;
     opacity: 0;
-    transform: translateY(0.5rem);
-    transition:
-      opacity var(--duration-base) var(--ease-out),
-      transform var(--duration-base) var(--ease-out);
+    transition: opacity var(--duration-base) var(--ease-out);
   }
 
   .showcase__copy {
@@ -180,17 +145,33 @@ const previewImage = previewForSlug(slug);
     max-width: 42rem;
   }
 
-  .showcase__copy .type-label {
+  .showcase__meta {
     margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--text-caption);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-charcoal);
   }
 
   .showcase__title {
     margin: 0;
     max-width: 14ch;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
   }
 
-  .showcase__copy .type-body-lg {
+  .showcase__summary {
     margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    color: var(--color-charcoal);
   }
 
   .showcase__stack {
@@ -204,14 +185,14 @@ const previewImage = previewForSlug(slug);
 
   .showcase__stack li {
     padding: var(--space-1) var(--space-3);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-pill);
-    font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    color: var(--color-text-secondary);
-    background: var(--color-surface);
+    border: 1px solid var(--color-iron);
+    border-radius: var(--radius-badge);
+    font-family: var(--font-display);
+    font-size: var(--text-caption);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--color-charcoal);
+    background: var(--color-bone);
   }
 
   .showcase__actions {
@@ -236,19 +217,12 @@ const previewImage = previewForSlug(slug);
   @media (hover: hover) and (pointer: fine) {
     .showcase__media:hover,
     .showcase__media:focus-visible {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-xl);
+      border-color: var(--color-charcoal);
     }
 
-    .showcase__media:hover .showcase__shot,
-    .showcase__media:focus-visible .showcase__shot {
-      transform: scale(1.02);
-    }
-
-    .showcase__media:hover .showcase__overlay,
-    .showcase__media:focus-visible .showcase__overlay {
+    .showcase__media:hover .showcase__badge,
+    .showcase__media:focus-visible .showcase__badge {
       opacity: 1;
-      transform: translateY(0);
     }
   }
 
@@ -257,9 +231,7 @@ const previewImage = previewForSlug(slug);
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .showcase__media,
-    .showcase__shot,
-    .showcase__overlay {
+    .showcase__badge {
       transition: none;
     }
   }
