@@ -92,7 +92,7 @@ Cuerpo: contexto, enfoque spec-driven, resultado (cualitativo si no hay métrica
 
 ### SPEC-006 — About
 
-- **Estado:** `In progress` (agosto 2026)
+- **Estado:** `Done` (agosto 2026)
 - **Ruta:** `/about` + bloque corto en home
 - **Incluye:** retrato, texto humano, curiosidades `[PLACEHOLDER]`, crédito ATMIRA/BME,
   Bosonit, Factoría F5. Inglés B2 si aporta. Remoto España.
@@ -101,11 +101,12 @@ Cuerpo: contexto, enfoque spec-driven, resultado (cualitativo si no hay métrica
 
 ### SPEC-007 — Contacto y brief
 
-- **Estado:** `Planned`
+- **Estado:** `Done` (agosto 2026)
 - **Ruta:** `/` #contacto (o sección final)
 - **Incluye:** WhatsApp, email, qué enviar (negocio, objetivo, referencias, plazo).
   Teléfono en claro vs solo deep-link: `[PLACEHOLDER]` (D-024).
 - **Excluye:** backend, Resend, Calendly.
+- **SPEC:** [`007-contacto-brief.md`](./007-contacto-brief.md)
 
 ---
 

@@ -54,7 +54,7 @@ lo vuelca como ficha de LinkedIn (D-030).
 | Email | rubenpv011992@gmail.com | Confirmado |
 | Teléfono | +34 722 20 30 03 | Confirmado |
 | WhatsApp | mismo móvil (`34722203003`) | Confirmado; CTA primario (D-019) |
-| Foto | [`src/assets/images/ruben-source.png`](../src/assets/images/ruben-source.png) | Confirmada como fuente; recorte pendiente (D-014) |
+| Foto | [`src/assets/images/ruben-source.png`](../src/assets/images/ruben-source.png) | Fuente recortada en UI (SPEC-003, D-014) |
 | LinkedIn / GitHub | Ver tabla arriba | Confirmado |
 | Curiosidades (2–3) | Candidatas del perfil GitHub: curiosidad, proactividad, ganas de seguir aprendiendo frontend | `[PLACEHOLDER]` hasta que las elija para About |
 | URL pública de Burbujas | — | `[PLACEHOLDER]` |

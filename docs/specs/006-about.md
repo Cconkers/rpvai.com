@@ -4,7 +4,7 @@
 |---|---|
 | **ID** | SPEC-006 |
 | **Título** | Sobre mí: página y bloque corto en home |
-| **Estado** | `In progress` |
+| **Estado** | `Done` |
 | **Fecha** | agosto 2026 |
 | **Ruta** | `/about`, `/` bloque Sobre mí, `src/data/about.ts` |
 
@@ -117,28 +117,28 @@ Title/description de `/about`. Schema: SPEC-008.
 
 ### Build y tipos
 
-- [ ] `npm run check` — 0 errores, 0 warnings, 0 hints
-- [ ] `npm run build` — OK
+- [x] `npm run check` — 0 errores, 0 warnings, 0 hints
+- [x] `npm run build` — OK
 
 ### Estructura y contenido
 
-- [ ] `/about` con retrato, crédito ATMIRA/BME, Bosonit, Factoría F5
-- [ ] España remoto; sin ciudad
-- [ ] Inglés B2 mencionado
-- [ ] Sin Jira/Karma/ArgoCD ni "Angular Specialist" como titular
-- [ ] Curiosidades no inventadas (placeholder o nota honesta)
-- [ ] Bloque corto en home con enlace a `/about`
+- [x] `/about` con retrato, crédito ATMIRA/BME, Bosonit, Factoría F5
+- [x] España remoto; sin ciudad
+- [x] Inglés B2 mencionado
+- [x] Sin Jira/Karma/ArgoCD ni "Angular Specialist" como titular
+- [x] Curiosidades no inventadas (placeholder o nota honesta)
+- [x] Bloque corto en home con enlace a `/about`
 
 ### Visual
 
-- [ ] Tokens semánticos; distinto de Burbujas
-- [ ] Retrato recortado (D-014)
+- [x] Tokens semánticos; distinto de Burbujas
+- [x] Retrato recortado (D-014)
 
 ### Responsive / a11y / rendimiento
 
-- [ ] 320–1440 sin scroll horizontal
-- [ ] Teclado y foco
-- [ ] Sin dependencias nuevas
+- [x] 320–1440 sin scroll horizontal
+- [x] Teclado y foco
+- [x] Sin dependencias nuevas
 
 ---
 
