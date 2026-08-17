@@ -1,0 +1,100 @@
+---
+import { cinematicClips } from '../../data/media';
+---
+
+<div class="cinematic" aria-hidden="true" data-cinematic-root>
+  {
+    cinematicClips.map((clip, index) => (
+      <div
+        class:list={['cinematic__layer', { 'is-active': index === 0 }]}
+        data-cinematic-layer={clip.id}
+      >
+        <video
+          class="cinematic__video"
+          muted
+          loop
+          playsinline
+          disablepictureinpicture
+          preload={clip.id === 'hero' ? 'auto' : 'none'}
+          data-cinematic-src={clip.src}
+        >
+          {clip.id === 'hero' && <source src={clip.src} type="video/mp4" />}
+        </video>
+        <div class="cinematic__wash"></div>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .cinematic {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    background: var(--color-background);
+  }
+
+  .cinematic__layer {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.4s var(--ease-luxe);
+  }
+
+  .cinematic__layer.is-active {
+    opacity: 1;
+  }
+
+  .cinematic__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.12);
+    will-change: transform, opacity;
+    transition: transform 1.4s var(--ease-luxe);
+  }
+
+  .cinematic__layer.is-active .cinematic__video {
+    transform: scale(1.06);
+  }
+
+  .cinematic__wash {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--color-rpv-white) 78%, transparent) 0%,
+        color-mix(in srgb, var(--color-rpv-paper) 88%, transparent) 45%,
+        color-mix(in srgb, var(--color-rpv-paper) 92%, transparent) 100%
+      ),
+      radial-gradient(
+        ellipse 90% 70% at 50% 0%,
+        color-mix(in srgb, var(--color-rpv-copper-100) 35%, transparent),
+        transparent 70%
+      );
+  }
+
+  @media (max-width: 767px) {
+    .cinematic__video {
+      transform: scale(1.2);
+    }
+
+    .cinematic__wash {
+      background:
+        linear-gradient(
+          180deg,
+          color-mix(in srgb, var(--color-rpv-white) 85%, transparent) 0%,
+          color-mix(in srgb, var(--color-rpv-paper) 94%, transparent) 100%
+        );
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cinematic {
+      display: none;
+    }
+  }
+</style>

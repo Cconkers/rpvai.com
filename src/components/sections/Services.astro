@@ -4,7 +4,8 @@ import SectionHead from '../ui/SectionHead.astro';
 import { services } from '../../data/offer';
 ---
 
-<section class="page-shell" id="servicios" aria-labelledby="servicios-heading">
+<section class="page-shell section-scene" data-cinematic-section="servicios" id="servicios" aria-labelledby="servicios-heading">
+  <div class="section-glass">
   <SectionHead
     kicker="02 — Oferta"
     heading="Servicios"
@@ -12,7 +13,7 @@ import { services } from '../../data/offer';
     lead="Desarrollo web por proyecto: la interfaz, las APIs, la IA y los datos que tu producto necesite. No vendo packs de landing."
   />
 
-  <ul class="service-grid" role="list">
+  <ul class="service-grid" role="list" data-reveal-stagger>
     {
       services.map((service, index) => (
         <li class="card">
@@ -30,6 +31,7 @@ import { services } from '../../data/offer';
       ))
     }
   </ul>
+  </div>
 </section>
 
 <style>
@@ -60,11 +62,21 @@ import { services } from '../../data/offer';
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.75rem;
+    height: 2.75rem;
     color: var(--color-accent);
     background: var(--color-accent-subtle);
     border-radius: var(--radius-md);
+    transition:
+      transform var(--duration-slow) var(--ease-luxe),
+      background-color var(--duration-base) var(--ease-out);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .card:hover .card__icon {
+      transform: scale(1.08);
+      background: color-mix(in srgb, var(--color-accent-subtle) 60%, var(--color-rpv-copper-200));
+    }
   }
 
   @media (min-width: 768px) {

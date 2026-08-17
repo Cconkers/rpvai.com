@@ -9,7 +9,8 @@ const projects = (await getCollection('projects')).sort((a, b) => {
 });
 ---
 
-<section class="page-shell" id="trabajo" aria-labelledby="trabajo-heading">
+<section class="page-shell section-scene" data-cinematic-section="trabajo" id="trabajo" aria-labelledby="trabajo-heading">
+  <div class="section-glass">
   <SectionHead
     kicker="01 — Prueba de oficio"
     heading="Trabajo"
@@ -17,7 +18,7 @@ const projects = (await getCollection('projects')).sort((a, b) => {
     lead="Casos reales, no una lista de herramientas. El primero es Burbujas de Luz."
   />
 
-  <ul class="work-grid" role="list">
+  <ul class="work-grid" role="list" data-reveal-stagger>
     {
       projects.map((project) => (
         <li class:list={[{ 'work-grid__featured': project.data.featured }]}>
@@ -26,6 +27,7 @@ const projects = (await getCollection('projects')).sort((a, b) => {
       ))
     }
   </ul>
+  </div>
 </section>
 
 <style>

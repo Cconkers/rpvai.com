@@ -4,7 +4,8 @@ import { briefItems, contactLead, emailCtaLabel, mailtoHref, whatsappHref } from
 import { site } from '../../data/site';
 ---
 
-<section class="page-shell" id="contacto" aria-labelledby="contacto-heading">
+<section class="page-shell section-scene" data-cinematic-section="contacto" id="contacto" aria-labelledby="contacto-heading">
+  <div class="section-glass">
   <SectionHead
     kicker="05 — Empezar"
     heading="Contacto"
@@ -12,7 +13,7 @@ import { site } from '../../data/site';
     lead={contactLead}
   />
 
-  <ol class="brief-grid">
+  <ol class="brief-grid" data-reveal-stagger>
     {
       briefItems.map((item, index) => (
         <li class="card brief-item">
@@ -26,7 +27,7 @@ import { site } from '../../data/site';
     }
   </ol>
 
-  <div class="contact-actions">
+  <div class="contact-actions" data-reveal>
     <a
       class="btn btn-primary"
       href={whatsappHref}
@@ -42,6 +43,7 @@ import { site } from '../../data/site';
     También puedes escribir a
     <a href={mailtoHref}>{site.email}</a>
   </p>
+  </div>
 </section>
 
 <style>

@@ -4,8 +4,9 @@ import { processHonesty, processIntro, processSteps } from '../../data/offer';
 import { site } from '../../data/site';
 ---
 
-<section class="band band--alt" id="como-trabajo" aria-labelledby="proceso-heading">
+<section class="band band--glass section-scene" data-cinematic-section="como-trabajo" id="como-trabajo" aria-labelledby="proceso-heading">
   <div class="page-shell">
+    <div class="section-glass">
     <SectionHead
       kicker="03 — Proceso"
       heading="Cómo trabajo"
@@ -13,7 +14,7 @@ import { site } from '../../data/site';
       lead={processIntro}
     />
 
-    <ol class="process-steps">
+    <ol class="process-steps" data-reveal-stagger>
       {
         processSteps.map((step, index) => (
           <li class="card process-step">
@@ -27,16 +28,18 @@ import { site } from '../../data/site';
       }
     </ol>
 
-    <p class="process-note type-body text-text-secondary">{processHonesty}</p>
+    <p class="process-note type-body text-text-secondary" data-reveal>{processHonesty}</p>
 
     <a
       class="btn btn-primary"
+      data-reveal
       href={site.whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
     >
       {site.ctaLabel}
     </a>
+    </div>
   </div>
 </section>
 

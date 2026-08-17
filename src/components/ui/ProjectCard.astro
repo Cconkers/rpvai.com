@@ -38,7 +38,10 @@ const href = placeholder ? undefined : `/work/${slug}/`;
     height: 100%;
     text-decoration: none;
     color: inherit;
-    transition: box-shadow var(--duration-base) var(--ease-out);
+    transition:
+      transform var(--duration-slow) var(--ease-luxe),
+      box-shadow var(--duration-slow) var(--ease-luxe),
+      border-color var(--duration-base) var(--ease-out);
   }
 
   .card--link .type-label,
@@ -51,22 +54,29 @@ const href = placeholder ? undefined : `/work/${slug}/`;
     margin-bottom: var(--space-3);
   }
 
+  @media (hover: hover) and (pointer: fine) {
+    .card--link:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-xl);
+      border-color: color-mix(in srgb, var(--color-accent) 40%, var(--color-border));
+    }
+
+    .card--link:hover .card__cta {
+      transform: translateX(4px);
+    }
+  }
+
   .card__cta {
     margin-top: auto;
     padding-top: var(--space-6);
     font-weight: 600;
     color: var(--color-accent);
+    transition: transform var(--duration-base) var(--ease-luxe);
   }
 
   .card--slot {
     height: 100%;
     border-style: dashed;
     background: transparent;
-  }
-
-  @media (hover: hover) and (pointer: fine) {
-    .card--link:hover {
-      box-shadow: var(--shadow-md);
-    }
   }
 </style>

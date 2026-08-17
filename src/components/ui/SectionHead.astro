@@ -9,8 +9,8 @@ interface Props {
 const { kicker, heading, headingId, lead } = Astro.props;
 ---
 
-<header class="section-head">
-  <p class="type-label text-accent">{kicker}</p>
+<header class="section-head" data-reveal>
+  <p class="type-label text-accent section-head__kicker">{kicker}</p>
   <h2 class="type-h2" id={headingId}>{heading}</h2>
   {
     lead && (
@@ -23,11 +23,25 @@ const { kicker, heading, headingId, lead } = Astro.props;
   .section-head {
     max-width: var(--prose-max);
     margin-bottom: var(--space-10);
-    padding-top: var(--space-2);
-    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-4);
+    position: relative;
   }
 
-  .section-head .type-label {
+  .section-head::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3rem;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      var(--color-accent),
+      color-mix(in srgb, var(--color-accent) 20%, transparent)
+    );
+  }
+
+  .section-head__kicker {
     margin: 0 0 var(--space-3);
   }
 
