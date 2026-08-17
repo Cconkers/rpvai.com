@@ -44,11 +44,12 @@ El kit documental (Grupo A) está hecho, incluida la decisión de sustituir el r
 
 ### SPEC-003 — Home hero + retrato + CTA
 
-- **Estado:** `Planned`
+- **Estado:** `Done` (agosto 2026)
 - **Ruta:** `/` — sección Hero
 - **Incluye:** titular de oferta (desarrollo web: frontend, APIs, IA, datos — no "busco empleo"),
   chip "Aceptando proyectos", retrato recortado (D-014), CTA WhatsApp, una línea de apoyo.
 - **Excluye:** resto de secciones (004+), sparkle/marco de la foto fuente.
+- **SPEC:** [`003-home-hero.md`](./003-home-hero.md)
 
 ---
 

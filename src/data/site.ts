@@ -6,6 +6,11 @@ export const site = {
   email: 'rubenpv011992@gmail.com',
   whatsappUrl: 'https://wa.me/34722203003',
   ctaLabel: 'Cuéntame tu proyecto',
+  availabilityLabel: 'Aceptando proyectos',
+  heroHeadline: 'Desarrollo web: interfaz, APIs, IA y datos',
+  heroSupport: 'Brief gratuito y propuesta en 48 horas.',
+  homeDescription:
+    'Desarrollo web freelance: frontend, UX/UI, integraciones, IA y webs con datos. Brief gratuito y propuesta en 48 horas.',
   githubUrl: 'https://github.com/Cconkers',
   linkedinUrl: 'https://www.linkedin.com/in/ruben-viedma-191a5913a',
 } as const;

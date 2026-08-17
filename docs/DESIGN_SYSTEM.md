@@ -373,7 +373,7 @@ probar 320px.
 |---------|-----|--------|
 | [`src/assets/images/ruben-source.png`](../src/assets/images/ruben-source.png) | Maestro del retrato (con marco; recortar) | Fuente |
 | [`public/design/ruben-source.png`](../public/design/ruben-source.png) | Referencia de diseño, no UI | Referencia |
-| `src/assets/images/ruben.webp` | Derivado recortado | **Pendiente SPEC-003** |
+| `src/assets/images/ruben.webp` | Derivado recortado en build (`astro:assets`) | **Done SPEC-003** |
 | Wordmark | Texto "Rubén Palomo" / "RPV" | No hay logo bitmap |
 | Capturas Burbujas | Case study | **Pendiente SPEC-005** |
 
