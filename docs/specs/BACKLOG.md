@@ -17,8 +17,7 @@ Burbujas 016) antes de redactar la SPEC.
 |----|------|--------|
 | — | Kit documental + revisión de oferta (servicios web, no landings) | **Done** (agosto 2026) |
 
-El kit documental (Grupo A) está hecho, incluida la decisión de sustituir el repo
-[Cconkers/rpvai](https://github.com/Cconkers/rpvai) (D-032, D-034).
+El kit documental (Grupo A) está hecho. **MVP de producto (Grupos B–D, SPEC-001–010): Done.**
 
 ---
 
@@ -114,25 +113,28 @@ Cuerpo: contexto, enfoque spec-driven, resultado (cualitativo si no hay métrica
 
 ### SPEC-008 — SEO
 
-- **Estado:** `Planned`
+- **Estado:** `Done` (agosto 2026)
 - **Incluye:** title/description, OG (composición con fondo sólido; no PNG con alfa
   sobre negro), sitemap, robots, schema `Person` + `ProfessionalService`. **No**
   `LocalBusiness` (D-017).
 - **Excluye:** blog, hreflang.
+- **SPEC:** [`008-seo.md`](./008-seo.md)
 
 ### SPEC-009 — Legal mínimo
 
-- **Estado:** `Planned`
+- **Estado:** `Done` (agosto 2026)
 - **Incluye:** aviso legal / privacidad acordes a email y WhatsApp. Sin inventar CIF ni
   domicilio. `[PLACEHOLDER]` de datos fiscales.
 - **Excluye:** cookies de tracking (no hay analytics aún).
+- **SPEC:** [`009-legal.md`](./009-legal.md)
 
 ### SPEC-010 — Polish visual, a11y, Lighthouse
 
-- **Estado:** `Planned`
+- **Estado:** `Done` (agosto 2026)
 - **Incluye:** pasar presupuesto D-025, reduced-motion, 320px, contraste medido,
   recortes de aire, estados de foco.
 - **Excluye:** rediseño, nuevas secciones.
+- **SPEC:** [`010-polish.md`](./010-polish.md)
 
 ---
 
@@ -155,12 +157,8 @@ No numerar hasta abrirlas. Cada una exige SPEC + decisión si toca arquitectura.
 
 ## Cómo orquestar
 
-1. Abre [`001.plan.md`](./001.plan.md) o redacta la SPEC con [`TEMPLATE.md`](./TEMPLATE.md).
-2. Pasa la SPEC a `Ready for implementation`.
-3. Rama `cursor/spec-NNN`.
-4. Pide al agente: **implementa SPEC-00N**. Debe seguir [`AGENTS.md`](../../AGENTS.md).
-5. Al cerrar: gitflow (D-022).
-6. Si hay duda de tema: `NNN.plan.md` de candidatos, no código.
+El MVP (001–010) está **Done**. Para Grupo E: redacta SPEC con [`TEMPLATE.md`](./TEMPLATE.md),
+rama `cursor/spec-NNN`, gitflow al cerrar.
 
 ---
 

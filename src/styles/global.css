@@ -162,6 +162,21 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5.5rem;
+  overflow-x: clip;
+  color-scheme: light;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: clip;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  background-color: var(--color-background);
+  color: var(--color-text);
 }
 
 body {
@@ -186,20 +201,21 @@ main {
 }
 
 .skip-link {
-  position: absolute;
+  position: fixed;
   left: var(--space-4);
-  top: -100%;
-  z-index: 100;
+  top: var(--space-4);
+  z-index: 200;
   padding: var(--space-2) var(--space-4);
   background: var(--color-primary);
   color: var(--color-text-on-fill);
   border-radius: var(--radius-md);
   font-weight: 600;
   text-decoration: none;
+  transform: translateY(-200%);
 }
 
 .skip-link:focus {
-  top: var(--space-4);
+  transform: translateY(0);
 }
 
 .btn {

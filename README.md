@@ -1,20 +1,18 @@
 # RPV — Rubén Palomo Viedma
 
 Web personal. Freelancer de **desarrollo web**: frontend, UX/UI, integraciones (APIs e IA)
-y webs con datos. Sustituye el sitio Angular del repo
-[Cconkers/rpvai](https://github.com/Cconkers/rpvai) (D-032, D-034). Dominio destino:
+y webs con datos. Repo [`Cconkers/rpvai`](https://github.com/Cconkers/rpvai). Dominio:
 `rpvai.com`.
+
+**MVP (SPEC-001–010) implementado.** Siguiente trabajo: Grupo E o cerrar `[PLACEHOLDER]`
+(URL Burbujas, proyectos 2–3, curiosidades, teléfono en claro, NIF). Ver
+[`PLANNING.md`](PLANNING.md) §0 y [`docs/specs/BACKLOG.md`](docs/specs/BACKLOG.md).
 
 ## Cómo trabajar (agentes)
 
-1. Lee [`AGENTS.md`](AGENTS.md) — mapa, 14 pasos, 14 reglas.
+1. Lee [`AGENTS.md`](AGENTS.md).
 2. Lee [`docs/DECISIONS.md`](docs/DECISIONS.md) y [`PLANNING.md`](PLANNING.md) §0.
-3. Mira [`docs/specs/BACKLOG.md`](docs/specs/BACKLOG.md).
-4. Implementa **solo** la SPEC activa. Siguiente: [`docs/specs/BACKLOG.md`](docs/specs/BACKLOG.md).
-
-```
-implementa SPEC-003
-```
+3. Mira el backlog. No hay SPEC de producto abierta en el MVP; abre una nueva para Grupo E.
 
 ## Documentos
 
@@ -28,10 +26,10 @@ implementa SPEC-003
 
 ## Foto
 
-Fuente del retrato: [`src/assets/images/ruben-source.png`](src/assets/images/ruben-source.png).
-No usar el marco azul ni el sparkle en la UI (D-014). Recorte en SPEC-003.
+Fuente: [`src/assets/images/ruben-source.png`](src/assets/images/ruben-source.png). En UI
+va recortada (D-014).
 
-## Comandos (tras SPEC-001)
+## Comandos
 
 | Comando | Acción |
 |---------|--------|
@@ -41,13 +39,8 @@ No usar el marco azul ni el sparkle en la UI (D-014). Recorte en SPEC-003.
 
 Node >= 22.12.0.
 
-## Deploy (Vercel, como Burbujas)
+## Deploy (Vercel)
 
-- CI: [`.github/workflows/ci.yml`](.github/workflows/ci.yml) — `check` + `build` en cada push.
-- Hosting: [`vercel.json`](vercel.json) — estático, carpeta `dist/`.
-- **Autodeploy:** integración GitHub en el [dashboard de Vercel](https://vercel.com/dashboard)
-  (no hay workflow de deploy en Actions). Enlaza el repo [`Cconkers/rpvai`](https://github.com/Cconkers/rpvai)
-  y pon **Production Branch** = `develop`. Cada push a `develop` o a `cursor/**` genera preview o producción.
-
-Si el proyecto Vercel sigue apuntando al slug antiguo (`rpvai.com`) o al repo desconectado,
-reconecta el git tras el rename (D-034).
+- CI: [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
+- Estático: [`vercel.json`](vercel.json)
+- Producción: rama `develop` en el dashboard, repo `Cconkers/rpvai`

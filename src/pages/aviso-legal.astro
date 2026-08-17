@@ -1,0 +1,59 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { legal } from '../data/legal';
+import { site } from '../data/site';
+---
+
+<LegalLayout
+  title={`Aviso legal — ${site.shortName}`}
+  description="Aviso legal del sitio personal de Rubén Palomo Viedma."
+>
+  <p class="type-label text-accent">Legal</p>
+  <h1 class="type-h1">Aviso legal</h1>
+
+  <h2 class="type-h2">1. Titular</h2>
+  <p>
+    Este sitio web (<strong>{legal.domain}</strong>) es un espacio personal de
+    <strong>{legal.holder}</strong>. No es una consultora ni una sociedad mercantil
+    presentada como tal.
+  </p>
+  <ul>
+    <li><strong>Titular:</strong> {legal.holder}</li>
+    <li><strong>Correo:</strong> {legal.email}</li>
+    <li>
+      <strong>WhatsApp:</strong>
+      {' '}
+      <a href={legal.whatsappUrl}>canal de contacto</a>
+      (el número no se publica en claro hasta confirmación)
+    </li>
+    <li><strong>Identificación fiscal:</strong> {legal.taxId}</li>
+    <li><strong>Domicilio:</strong> {legal.address}</li>
+  </ul>
+
+  <h2 class="type-h2">2. Objeto</h2>
+  <p>
+    El sitio informa de servicios de desarrollo web por proyecto y permite iniciar un
+    brief por WhatsApp o correo. Los contenidos son orientativos; el alcance de cada
+    encargo se fija en la propuesta.
+  </p>
+
+  <h2 class="type-h2">3. Propiedad intelectual</h2>
+  <p>
+    Los textos, el diseño y el código de este sitio pertenecen a {legal.holder}, salvo
+    las marcas de terceros citadas como crédito profesional (ATMIRA, BME, Bosonit, Factoría
+    F5) o el case study de cliente, que conserva su identidad.
+  </p>
+
+  <h2 class="type-h2">4. Responsabilidad</h2>
+  <p>
+    No se garantiza la ausencia de errores ni la disponibilidad continua. Los enlaces a
+    terceros (GitHub, LinkedIn, WhatsApp) se rigen por sus propias condiciones.
+  </p>
+
+  <h2 class="type-h2">5. Legislación</h2>
+  <p>
+    El titular opera en España, en remoto. Cualquier controversia se somete a la
+    legislación española y a los tribunales competentes, sin señalar una ciudad en este
+    sitio.
+  </p>
+</LegalLayout>

@@ -22,7 +22,7 @@ const { title, year, role, stack, url, summary } = project.data;
 const liveUrl = url.startsWith('http') ? url : null;
 ---
 
-<BaseLayout title={`${title} — ${site.shortName}`} description={summary}>
+<BaseLayout title={`${title} — ${site.shortName}`} description={summary} ogType="article">
   <article class="page-shell case">
     <p class="type-label text-accent">{year} · {role}</p>
     <h1 class="type-h1">{title}</h1>

@@ -1,17 +1,24 @@
 ---
 import Footer from '../components/sections/Footer.astro';
 import Header from '../components/sections/Header.astro';
+import { canonicalUrl, jsonLdGraph, siteUrl } from '../data/seo';
 import '../styles/global.css';
 
 interface Props {
   title?: string;
   description?: string;
+  ogType?: 'website' | 'article';
 }
 
 const {
   title = 'Rubén Palomo Viedma — Desarrollo web',
-  description = 'Frontend, UX/UI, integraciones e IA. Sitio en construcción.',
+  description = 'Frontend, UX/UI, integraciones e IA. Brief gratuito y propuesta en 48 horas.',
+  ogType = 'website',
 } = Astro.props;
+
+const canonical = canonicalUrl(Astro.url.pathname);
+const ogImage = `${siteUrl}/og.svg`;
+const jsonLd = JSON.stringify(jsonLdGraph());
 ---
 
 <!doctype html>
@@ -21,8 +28,37 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <meta name="color-scheme" content="light" />
     <title>{title}</title>
+    <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="/fonts/source-sans-3-400.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/newsreader-700.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content="Rubén Palomo Viedma" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="Rubén Palomo Viedma — Desarrollo web" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <script is:inline type="application/ld+json" set:html={jsonLd} />
   </head>
   <body class="bg-background text-text font-body">
     <a class="skip-link" href="#contenido">Saltar al contenido</a>

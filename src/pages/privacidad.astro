@@ -1,0 +1,47 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { legal } from '../data/legal';
+import { site } from '../data/site';
+---
+
+<LegalLayout
+  title={`Privacidad — ${site.shortName}`}
+  description="Cómo se tratan los datos que envías por WhatsApp o email a Rubén Palomo Viedma."
+>
+  <p class="type-label text-accent">Legal</p>
+  <h1 class="type-h1">Privacidad</h1>
+
+  <h2 class="type-h2">1. Responsable</h2>
+  <p>
+    <strong>{legal.holder}</strong> ({legal.email}) trata los datos que le envíes para
+    responder un brief o una consulta. No hay área de cliente ni cuenta de usuario.
+  </p>
+
+  <h2 class="type-h2">2. Qué datos y para qué</h2>
+  <p>
+    Si escribes por WhatsApp o correo, se tratan el número o la dirección que uses y el
+    contenido del mensaje (negocio, objetivo, referencias, plazo). La finalidad es
+    elaborar una propuesta y mantener la conversación del encargo. Base jurídica:
+    medidas precontractuales o interés en atender tu solicitud.
+  </p>
+
+  <h2 class="type-h2">3. Conservación y cesiones</h2>
+  <p>
+    Se conservan el tiempo necesario para la relación comercial y las obligaciones
+    legales. WhatsApp (Meta) y el proveedor de correo actúan como encargados o canales
+    ajenos; el alojamiento del sitio es {legal.hosting}. No se venden datos.
+  </p>
+
+  <h2 class="type-h2">4. Cookies y analítica</h2>
+  <p>
+    Este sitio no usa cookies de seguimiento ni analítica de terceros. Pueden existir
+    cookies técnicas del alojamiento o del navegador, ajenas a un perfil comercial.
+  </p>
+
+  <h2 class="type-h2">5. Derechos</h2>
+  <p>
+    Puedes solicitar acceso, rectificación, supresión u oposición escribiendo a
+    {legal.email}. También puedes reclamar ante la Agencia Española de Protección de
+    Datos.
+  </p>
+</LegalLayout>

@@ -9,41 +9,39 @@
 
 ## 0. Estado actual (agosto 2026)
 
-**Esta sección prevalece.** SPEC-001 está implementada: Astro SSG + Tailwind v4,
-tokens en `global.css`, CI y `vercel.json`. No hay UI comercial aún (SPEC-002+).
+**Esta sección prevalece.** El **MVP está implementado** (SPEC-001 a SPEC-010): sitio Astro
+estático de marca personal, oferta de desarrollo web, un case study, contacto por
+WhatsApp/email, SEO y legal mínimo. Lo que sigue es Grupo E o datos `[PLACEHOLDER]`.
 
 ### 0.1 Qué hay ahora
 
 | Artefacto | Rol |
 |-----------|-----|
-| [`AGENTS.md`](AGENTS.md) | Orquestador de agentes |
-| [`CLAUDE.md`](CLAUDE.md) | Puntero a AGENTS (D-020) |
-| [`docs/PRODUCT.md`](docs/PRODUCT.md) | Producto, oferta, persona |
-| [`docs/VISUAL_DIRECTION.md`](docs/VISUAL_DIRECTION.md) | Dirección estética |
-| [`docs/DESIGN_SYSTEM.md`](docs/DESIGN_SYSTEM.md) | Tokens y reglas |
-| [`docs/DECISIONS.md`](docs/DECISIONS.md) | Decisiones |
-| [`docs/specs/`](docs/specs/) | TEMPLATE, BACKLOG, planes |
-| [`.cursor/rules/spec-gitflow.mdc`](.cursor/rules/spec-gitflow.mdc) | Flujo git por SPEC |
-| `src/assets/images/ruben-source.png` | Maestro del retrato (sin recortar) |
-| `public/design/ruben-source.png` | Referencia visual |
+| `src/pages/` | `/`, `/about`, `/work/[slug]`, `/aviso-legal`, `/privacidad`, `sitemap.xml` |
+| `src/content/projects/` | Collection: Burbujas + dos huecos |
+| `src/layouts/BaseLayout.astro` | Skip link, OG, canonical, JSON-LD Person + ProfessionalService |
+| `src/styles/global.css` | Tokens `--rpv-*` / semánticos, Tailwind v4 `@theme` |
+| `public/og.svg` | OG de fondo papel sólido (D-014: no foto con alfa) |
+| `public/robots.txt` | Allow `/`, Disallow `/design/`, Sitemap |
+| CI + `vercel.json` | `check`/`build`; deploy = integración GitHub de Vercel (`develop`) |
 
-### 0.2 Stack objetivo (a instalar en SPEC-001)
+Rutas de producto: home (hero, trabajo, servicios, proceso, about corto, contacto),
+about, case Burbujas, legal.
 
-| Capa | Tecnología | Notas |
-|------|-----------|--------|
-| Framework | Astro (estable actual, objetivo 7.x) | SSG |
-| Estilos | Tailwind CSS v4 vía `@tailwindcss/vite` | `@theme` en CSS; **sin** `tailwind.config` (D-013) |
-| Tipos | TypeScript strict | `astro check` |
-| Diagnósticos | `@astrojs/check` | script `npm run check` |
-| Contenido | Content collections (Markdown/MDX) | Case studies (D-026); puede entrar en SPEC-001 o 005 |
-| Hosting | Vercel (preferido, mismo que Burbujas) o Cloudflare Pages | Decisión de deploy en SPEC-001 / 008 |
+Aún `[PLACEHOLDER]`: URL y capturas de Burbujas, proyectos 2–3, curiosidades, teléfono
+en claro, NIF/domicilio, suelo de precio. No hay analytics ni formulario.
 
-No hay librería de animación, 3D, CMS ni React (D-003, D-004). Node **>= 22.12.0**.
+### 0.1-bis Stack (sin cambio)
+
+Astro 7 SSG, Tailwind v4 en CSS, TypeScript strict, content collections, Node >= 22.12.
+Sin React, sin `tailwind.config`, sin adapter Vercel. Hosting: Vercel estático.
+
+El detalle de carpetas y métricas de más abajo sigue vigente. El párrafo «no hay UI
+comercial» del registro histórico de SPEC-001 **ya no describe el repo**.
 
 ### 0.3 Tailwind v4 se configura en CSS
 
-No crear `tailwind.config.mjs`. Tokens en [`src/styles/global.css`](src/styles/global.css)
-cuando exista.
+No crear `tailwind.config.mjs`. Tokens en [`src/styles/global.css`](src/styles/global.css).
 
 ### 0.4 Dirección vigente
 
@@ -185,13 +183,13 @@ Tailwind `md` / `lg` en [`DESIGN_SYSTEM.md`](docs/DESIGN_SYSTEM.md).
 
 El backlog operativo está en [`docs/specs/BACKLOG.md`](docs/specs/BACKLOG.md). Resumen:
 
-| Grupo | SPECs | Qué |
-|-------|-------|-----|
-| A | (este kit) | Docs + foto fuente. **Hecho en la fundación.** |
-| B | 001–003 | Scaffold, chrome, hero+foto |
-| C | 004–007 | Servicios, Burbujas, about, contacto |
-| D | 008–010 | SEO, legal, polish |
-| E | futuras | Demo IA, más proyectos, i18n, Calendly, Resend |
+| Grupo | SPECs | Qué | Estado |
+|-------|-------|-----|--------|
+| A | kit | Docs + foto fuente | Done |
+| B | 001–003 | Scaffold, chrome, hero+foto | Done |
+| C | 004–007 | Servicios, Burbujas, about, contacto | Done |
+| D | 008–010 | SEO, legal, polish | Done (MVP) |
+| E | futuras | Demo IA, más proyectos, i18n, Calendly, Resend, capturas | Abierto |
 
 No implementar un grupo posterior sin cerrar (o explicitar skip de) el anterior, salvo
 orden distinto pedido por el orquestador.
