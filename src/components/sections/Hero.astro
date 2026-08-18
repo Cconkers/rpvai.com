@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import heroTerrain from '../../assets/images/hero-terrain.jpg';
+import rubenCutout from '../../assets/images/ruben-cutout.png';
 import { site } from '../../data/site';
 ---
 
@@ -15,33 +16,46 @@ import { site } from '../../data/site';
     class="hero-cine__bg"
     aria-hidden="true"
   />
+  <div class="hero-cine__wash" aria-hidden="true"></div>
 
-  <div class="hero-cine__content">
-    <p class="hero-cine__eyebrow hero__enter hero__enter--1">{site.mark} · {site.tagline}</p>
+  <div class="hero-cine__layout">
+    <div class="hero-cine__content">
+      <p class="hero-cine__eyebrow hero__enter hero__enter--1">{site.mark} · {site.tagline}</p>
 
-    <h1 id="hero-heading" class="hero-cine__title hero__enter hero__enter--2">
-      {site.heroHeadline}
-    </h1>
+      <h1 id="hero-heading" class="hero-cine__title hero__enter hero__enter--2">
+        {site.heroHeadline}
+      </h1>
 
-    <p class="hero-cine__lead hero__enter hero__enter--3">{site.heroSupport}</p>
+      <p class="hero-cine__lead hero__enter hero__enter--3">{site.heroSupport}</p>
 
-    <div class="hero-cine__actions hero__enter hero__enter--4">
-      <a
-        class="btn btn-pill-light"
-        href={site.whatsappUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {site.ctaLabel}
-      </a>
-      <a class="btn btn-pill-ghost" href={site.ctaSecondaryHref}>
-        {site.ctaSecondaryLabel}
-      </a>
+      <div class="hero-cine__actions hero__enter hero__enter--4">
+        <a
+          class="btn btn-pill-light"
+          href={site.whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {site.ctaLabel}
+        </a>
+        <a class="btn btn-pill-ghost" href={site.ctaSecondaryHref}>
+          {site.ctaSecondaryLabel}
+        </a>
+      </div>
+
+      <p class="hero-cine__tech hero__enter hero__enter--5" aria-label="Stack tecnológico">
+        {site.heroTechLine}
+      </p>
     </div>
 
-    <p class="hero-cine__tech hero__enter hero__enter--5" aria-label="Stack tecnológico">
-      {site.heroTechLine}
-    </p>
+    <Image
+      src={rubenCutout}
+      alt="Retrato de Rubén Palomo Viedma"
+      widths={[480, 640, 800, 1024]}
+      sizes="(min-width: 1024px) 28vw, 52vw"
+      loading="eager"
+      decoding="async"
+      class="hero-cine__portrait hero__enter hero__enter--2"
+    />
   </div>
 </section>
 
@@ -52,10 +66,9 @@ import { site } from '../../data/site';
     place-items: center;
     min-height: min(100svh, 56rem);
     margin-top: -6.25rem;
-    padding: calc(6.25rem + var(--space-16)) var(--gutter) var(--space-20);
+    padding: calc(6.25rem + var(--space-12)) var(--gutter) var(--space-16);
     overflow: clip;
     color: var(--color-paper-white);
-    text-align: center;
   }
 
   .hero-cine__bg {
@@ -67,14 +80,41 @@ import { site } from '../../data/site';
     object-position: center 40%;
   }
 
-  .hero-cine__content {
+  .hero-cine__wash {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      color-mix(in srgb, var(--color-deep-teal) 72%, transparent) 0%,
+      color-mix(in srgb, var(--color-deep-teal) 28%, transparent) 42%,
+      transparent 68%
+    );
+  }
+
+  .hero-cine__layout {
     position: relative;
     z-index: 1;
+    display: grid;
+    gap: var(--space-8);
+    align-items: center;
+    width: min(100%, var(--content-max));
+  }
+
+  .hero-cine__content {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--space-6);
-    max-width: 52rem;
+    max-width: 36rem;
+    text-align: left;
+  }
+
+  .hero-cine__portrait {
+    display: block;
+    width: min(100%, 20rem);
+    height: auto;
+    margin-inline: auto;
+    object-fit: contain;
   }
 
   .hero-cine__eyebrow {
@@ -94,7 +134,7 @@ import { site } from '../../data/site';
     font-weight: 700;
     line-height: 0.95;
     letter-spacing: -0.045em;
-    max-width: 14ch;
+    max-width: 12ch;
   }
 
   .hero-cine__lead {
@@ -111,13 +151,12 @@ import { site } from '../../data/site';
   .hero-cine__actions {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: var(--space-3);
     margin-top: var(--space-2);
   }
 
   .hero-cine__tech {
-    margin: var(--space-4) 0 0;
+    margin: var(--space-2) 0 0;
     font-family: var(--font-display);
     font-size: var(--text-caption);
     font-weight: 500;
@@ -142,6 +181,23 @@ import { site } from '../../data/site';
   @media (min-width: 768px) {
     .hero-cine {
       min-height: 100svh;
+    }
+
+    .hero-cine__portrait {
+      width: min(100%, 18rem);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-cine__layout {
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: var(--space-12);
+    }
+
+    .hero-cine__portrait {
+      width: clamp(16rem, 28vw, 22rem);
+      margin-inline: 0;
+      align-self: end;
     }
   }
 

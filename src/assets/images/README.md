@@ -1,7 +1,5 @@
 # Retrato — fuente
 
-`ruben-source.png` es el maestro entregado (retrato circular sobre fondo azul + sparkle).
-
-- **No** se sirve tal cual en la UI.
-- Recorte circular de la cara, sin marco ni sparkle: SPEC-003 / [`DESIGN_SYSTEM.md`](../../../docs/DESIGN_SYSTEM.md) — Retrato.
+- `ruben-source.png` — maestro entregado (retrato circular sobre fondo azul + sparkle). **No** se sirve tal cual.
+- `ruben-cutout.png` — recorte circular con alpha, sin marco azul ni sparkle. Generado con `scripts/process-portrait.mjs` (D-014).
 - Copia de referencia: [`public/design/ruben-source.png`](../../../public/design/ruben-source.png).

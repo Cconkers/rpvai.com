@@ -14,9 +14,7 @@ import { about } from '../../data/about';
     />
 
     <div class="about-teaser" data-reveal>
-      <div class="about-teaser__portrait">
-        <Portrait size="md" loading="lazy" />
-      </div>
+      <Portrait size="md" loading="lazy" />
       <div class="about-teaser__copy">
         <p class="about-teaser__body">{about.teaserBody}</p>
         <a class="btn btn-pill-dark" href="/about">{about.moreLabel}</a>
@@ -30,17 +28,6 @@ import { about } from '../../data/about';
     display: grid;
     gap: var(--space-8);
     align-items: center;
-  }
-
-  .about-teaser__portrait {
-    border-radius: 2rem;
-    border: 1px solid var(--color-iron);
-    overflow: hidden;
-    width: fit-content;
-  }
-
-  .about-teaser__portrait :global(img) {
-    display: block;
   }
 
   .about-teaser__copy {
